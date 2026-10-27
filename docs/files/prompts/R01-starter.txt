@@ -1,0 +1,15 @@
+Build a tiny "paper inbox -> wiki" in this folder. Needs Python 3; to read PDFs use your own PDF reading or `pdftotext` (poppler-utils). I have put one open-access PDF in this folder.
+
+1. Create `raw/` (filed sources, never edited after filing), `wiki/sources/` and `wiki/concepts/`. Add two short concept pages to `wiki/concepts/`: `multi-agent-systems.md` and `tool-use.md` (title + two lines each).
+2. Write `file_paper.py PDF --tag TAG [--note TEXT]` (standard library only): copy (never move) the PDF to `raw/<tag>/`, refuse to overwrite, and write `<file>.source.md` next to it with: filed_at (ISO time), original path, sha256, tag, note.
+3. Write `SOURCE_PAGE.md`: instructions an agent follows to turn one filed PDF into `wiki/sources/<file stem>.md` with exactly these sections:
+   - `## Citation`: authors, year, title, venue or arXiv id, as printed on the paper
+   - `## Takeaway`: one line
+   - `## Key claims`: 3-7 bullets, each ending with its PDF page number, like `(p. 4)`
+   - `## Concepts`: [[wikilinks]] only to pages that exist in `wiki/concepts/`, and add a backlink line to each linked concept page
+   - `## Source`: relative links to the raw PDF and its .source.md
+   Rules: use only the PDF (no memory, no web); every claim must be on the page it cites; if unsure, leave it out.
+4. File the PDF in this folder with tag `test`, then follow SOURCE_PAGE.md yourself to write its page.
+
+Done when: the sha256 of `raw/test/<file>.pdf` matches the one in its .source.md, the source page has all five sections, every key claim ends with a page number, and every [[link]] has a file in `wiki/concepts/`.
+Left out on purpose: the phone inbox (e.g. a Telegram bot) and a full PDF parser for tables, equations and figures (e.g. MinerU).

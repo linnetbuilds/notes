@@ -1,0 +1,21 @@
+{
+  "public_codes": [
+    "R01"
+  ],
+  "source_sha256": {
+    "posts/R01-paper-to-wiki.md": "e82d40d42e2ab57666cdd2e1ebee29f81b52e25c0d9a68e6e83f6a5be9cfa1c0"
+  },
+  "pages": [
+    "about/index.html",
+    "es/acerca/index.html",
+    "es/index.html",
+    "es/notas/index.html",
+    "es/notas/r01-paper-to-wiki/index.html",
+    "es/recursos/index.html",
+    "index.html",
+    "notes/index.html",
+    "notes/r01-paper-to-wiki/index.html",
+    "resources/index.html"
+  ],
+  "future_drafts_included": false
+}

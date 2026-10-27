@@ -1,0 +1,5 @@
+The site uses the unchanged Linnet brand fonts. Each font retains its SIL Open Font License.
+
+Figtree: figtree-OFL.txt
+Plus Jakarta Sans: plusjakartasans-OFL.txt
+IBM Plex Mono: ibmplexmono-OFL.txt
