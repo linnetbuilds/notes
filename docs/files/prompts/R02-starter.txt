@@ -1,0 +1,14 @@
+Build a small "resume runner" in this folder so long jobs come back after a reboot or power cut. Needs Linux with systemd user services and cron (WSL2 with systemd enabled works) and Python 3, standard library only. Use absolute paths everywhere, since cron does not start in this folder.
+
+1. Jobs are `jobs/<name>.job` files with two lines: `WORKDIR=/abs/path` and `CMD=command to run`.
+2. `runner.py`: for each job without `state/<name>.done`:
+   - skip it if its systemd user unit `<prefix><name>.service` is active (prefix from env `RR_PREFIX`, default `rr-`);
+   - if `state/<name>.tries` already says 6, log that it gave up and skip it;
+   - otherwise add one try and start it with `systemd-run --user` (unit `<prefix><name>`, its WORKDIR, auto-cleanup of finished units) wrapped so exit code 0 creates `state/<name>.done`.
+   Log one line per action, with a timestamp, to `state/runner.log`.
+3. `atomic_write.py` with `atomic_write(path, text)`: temp file in the same folder, flush, os.fsync, os.replace onto the target, then fsync the folder.
+4. Example job `jobs/count.job` running `example/count.py`: counts to 30, one step per second, saves its step with atomic_write after each step, and resumes from the saved step when restarted.
+5. Cron: show me the two crontab lines, `@reboot sleep 120 && /usr/bin/python3 <abs>/runner.py` and `*/30 * * * * /usr/bin/python3 <abs>/runner.py`, then ASK before installing them. Install nothing in crontab without my yes.
+
+Done when: `python3 runner.py` starts the count job (`systemctl --user status rr-count` shows it running); running it again does not start a second copy; after `systemctl --user stop rr-count`, running it again resumes from the saved step, not from 0; and `state/count.done` appears when it finishes.
+Left out on purpose: notifications, job dependencies, queues.

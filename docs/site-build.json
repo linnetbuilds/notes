@@ -1,8 +1,10 @@
 {
   "public_codes": [
+    "R02",
     "R01"
   ],
   "source_sha256": {
+    "posts/R02-power-cuts.md": "2cd6ec5d0adb14fdce511d9a1d3d46e72985cda538a0fdb0e35f939c3bf113fb",
     "posts/R01-paper-to-wiki.md": "e82d40d42e2ab57666cdd2e1ebee29f81b52e25c0d9a68e6e83f6a5be9cfa1c0"
   },
   "pages": [
@@ -11,10 +13,12 @@
     "es/index.html",
     "es/notas/index.html",
     "es/notas/r01-paper-to-wiki/index.html",
+    "es/notas/r02-power-cuts/index.html",
     "es/recursos/index.html",
     "index.html",
     "notes/index.html",
     "notes/r01-paper-to-wiki/index.html",
+    "notes/r02-power-cuts/index.html",
     "resources/index.html"
   ],
   "future_drafts_included": false
