@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "PostToolUse": [{"matcher": "Write|Edit|MultiEdit", "hooks": [{"type": "command", "command": "python3 hooks/banned_words.py", "timeout": 10}]}]
+  }
+}

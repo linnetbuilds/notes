@@ -1,75 +1,78 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Linnet Builds | De un PDF a una nota conectada</title><meta name="description" content="Hecho, probado y contado."><link rel="canonical" href="https://linnetbuilds.github.io/notes/es/notas/r01-paper-to-wiki/"><link rel="alternate" hreflang="en" href="https://linnetbuilds.github.io/notes/notes/r01-paper-to-wiki/index.html"><meta property="og:title" content="Linnet Builds | De un PDF a una nota conectada"><meta property="og:type" content="article"><meta property="og:url" content="https://linnetbuilds.github.io/notes/es/notas/r01-paper-to-wiki/"><meta property="og:image" content="https://linnetbuilds.github.io/notes/assets/social-card.png"><meta property="og:description" content="Hecho, probado y contado."><link rel="icon" href="../../../assets/mark.png"><link rel="stylesheet" href="../../../assets/site.css"><script defer src="../../../assets/site.js"></script></head><body>
 <a class="skip" href="#main">Ir al contenido</a><header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="../../index.html"><img src="../../../assets/mark.png" alt="" width="36" height="36">linnet builds.</a><nav class="main-nav" aria-label="Navegación principal"><a href="../index.html">Notas</a><a href="../../recursos/index.html">Recursos</a><a href="../../acerca/index.html">Sobre Linnet</a><a class="github-link" href="https://github.com/linnetbuilds/notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.2.8 3.28.12.1-.73.4-1.23.72-1.52-2.49-.28-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 5.35c.95 0 1.9.13 2.79.38 2.13-1.44 3.07-1.15 3.07-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.26-5.12 5.54.4.35.76 1.03.76 2.08v3.92c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>GitHub</a></nav><a class="lang-link" href="../../../notes/r01-paper-to-wiki/index.html" lang="en" hreflang="en" aria-label="Read in English">EN / <strong>ES</strong></a></div></header>
-<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notas</a> / R01</p><h1>De un PDF a una nota conectada</h1><div class="article-meta"><span>2026-10-26</span><span>R01 · EN</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R01-paper-to-wiki.md">Ver en GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">En esta nota</p><ol><li><a href="#what-it-does">What it does</a></li><li><a href="#measured">Measured</a></li><li><a href="#tools">Tools</a></li><li><a href="#cost-prices-as-of-oct-2026">Cost (prices as of Oct 2026)</a></li><li><a href="#on-screen">On screen</a></li><li><a href="#try-it">Try it</a></li><li><a href="#gotchas">Gotchas</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R01-paper-to-wiki.md">Ver en GitHub ↗</a></aside><article class="prose" lang="en"><p class="original-language">La nota completa está en inglés. Incluye un resumen en español al final.</p><p>My papers are read by a parser on my own computer, not by the AI I pay for. That AI only
-writes the wiki page.</p>
-<h2 id="what-it-does">What it does</h2>
+<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notas</a> / R01</p><h1>De un PDF a una nota conectada</h1><div class="article-meta"><span>2026-10-26</span><span>R01 · ES</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R01-paper-to-wiki.es.md">Ver en GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">En esta nota</p><ol><li><a href="#que-hace">Qué hace</a></li><li><a href="#medido">Medido</a></li><li><a href="#herramientas">Herramientas</a></li><li><a href="#costo-precios-a-oct-2026">Costo (precios a oct 2026)</a></li><li><a href="#en-pantalla">En pantalla</a></li><li><a href="#pruebalo">Pruébalo</a></li><li><a href="#ojo-con-esto">Ojo con esto</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R01-paper-to-wiki.es.md">Ver en GitHub ↗</a></aside><article class="prose" lang="es"><p>Mis papers los lee un parser en mi propia computadora, no la IA que pago. Esa IA solo
+escribe la página de la wiki.</p>
+<h2 id="que-hace">Qué hace</h2>
 <ol>
-<li><strong>Send.</strong> I send a PDF (or an arXiv link) to a private Telegram bot from my phone. A
-short tag in the caption, like <code>#llm-agents</code>, says which part of the wiki it belongs to.</li>
-<li><strong>File.</strong> On my computer, the bot saves the PDF in a folder of raw sources, next to a
-small note on where it came from (when, how it arrived, the caption). The original file
-is never edited.</li>
-<li><strong>Parse.</strong> A PDF parser pulls out the text, tables, equations and figures. It keeps
-diagrams and leaves out logos and photos.</li>
-<li><strong>Write.</strong> An AI agent reads the paper and writes its wiki page: the citation, a
-one-line takeaway, and the key claims, each tied back to the paper. It links the page
-to concept pages already in the wiki and updates them.</li>
-<li><strong>Reply.</strong> The bot sends a short summary back to my phone.</li>
+<li><strong>Mandar.</strong> Desde el celular mando un PDF (o un enlace de arXiv) a un bot privado de
+Telegram. Una etiqueta corta en el texto del mensaje, como <code>#llm-agents</code>, dice a qué
+parte de la wiki pertenece.</li>
+<li><strong>Archivar.</strong> En mi computadora, el bot guarda el PDF en una carpeta de fuentes sin
+procesar, junto a una notita de dónde salió (cuándo, cómo llegó, el texto del mensaje).
+El archivo original no se edita nunca.</li>
+<li><strong>Desarmar.</strong> Un parser de PDF saca el texto, las tablas, las ecuaciones y las figuras.
+Se queda con los diagramas y deja fuera logos y fotos.</li>
+<li><strong>Escribir.</strong> Un agente de IA lee el paper y escribe su página en la wiki: la cita, la
+idea principal en una línea y las afirmaciones clave, cada una atada al paper. Enlaza la
+página con páginas de conceptos que ya están en la wiki y las actualiza.</li>
+<li><strong>Responder.</strong> El bot me manda un resumen corto al celular.</li>
 </ol>
-<p>The wiki is a folder of plain Markdown files, opened in Obsidian.</p>
-<h2 id="measured">Measured</h2>
-<p>Recording run, 2026-10-18: PDF sent from the phone at 17:20, ingest finished at 17:24:27,
-so <strong>4 min 9 s</strong> from phone to page, including the parser.</p>
-<figure><img src="../../../files/posts/img/R01-bot-reply.jpg" alt="The Telegram bot chat on the recording run: the PDF sent at 17:20, the bot's reply that it filed the paper, and at 17:24:27 a summary of the new wiki page and the pages it linked" loading="lazy" /><figcaption>The Telegram bot chat on the recording run: the PDF sent at 17:20, the bot&#x27;s reply that it filed the paper, and at 17:24:27 a summary of the new wiki page and the pages it linked</figcaption></figure>
-<p>The parser found 174 text
-blocks, 20 tables, 1 equation and 21 figures and charts in the paper (Wu et al. 2023,
-AutoGen, arXiv:2308.08155), and the new page linked to 12 pages already in the wiki.</p>
-<p>The parser runs on my own GPU, so reading the PDF spends no AI tokens.</p>
-<p>Earlier test without the parser, 2026-10-16: <strong>2 min 40 s</strong>.</p>
-<h2 id="tools">Tools</h2>
+<p>La wiki es una carpeta de archivos Markdown simples, abierta en Obsidian.</p>
+<h2 id="medido">Medido</h2>
+<p>Grabación del 2026-10-18: PDF mandado desde el celular a las 17:20, ingesta terminada a las
+17:24:27, o sea <strong>4 min 9 s</strong> del celular a la página, parser incluido.</p>
+<figure><img src="../../../files/posts/img/R01-bot-reply.jpg" alt="El chat con el bot de Telegram en la grabación: el PDF mandado a las 17:20, la respuesta del bot de que archivó el paper, y a las 17:24:27 un resumen de la nueva página de la wiki y de las páginas que enlazó" loading="lazy" /><figcaption>El chat con el bot de Telegram en la grabación: el PDF mandado a las 17:20, la respuesta del bot de que archivó el paper, y a las 17:24:27 un resumen de la nueva página de la wiki y de las páginas que enlazó</figcaption></figure>
+<p>El parser encontró 174 bloques de texto, 20 tablas, 1 ecuación y 21 figuras y gráficos en
+el paper (Wu et al. 2023, AutoGen, arXiv:2308.08155), y la nueva página quedó enlazada a 12
+páginas que ya estaban en la wiki.</p>
+<p>El parser corre en mi propia GPU, así que leer el PDF no gasta tokens de IA.</p>
+<p>Prueba anterior sin el parser, 2026-10-16: <strong>2 min 40 s</strong>.</p>
+<h2 id="herramientas">Herramientas</h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
-<th>Piece</th>
-<th>Tool</th>
+<th>Pieza</th>
+<th>Herramienta</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Phone inbox</td>
-<td>A Telegram bot (Telegram Bot API)</td>
+<td>Bandeja de entrada en el celular</td>
+<td>Un bot de Telegram (Telegram Bot API)</td>
 </tr>
 <tr>
-<td>PDF parser</td>
-<td>MinerU (open source)</td>
+<td>Parser de PDF</td>
+<td>MinerU (código abierto)</td>
 </tr>
 <tr>
-<td>Agent</td>
-<td>Claude Code, run without a terminal (<code>claude -p</code>)</td>
+<td>Agente</td>
+<td>Claude Code, corriendo sin terminal (<code>claude -p</code>)</td>
 </tr>
 <tr>
 <td>Wiki</td>
-<td>Markdown files, viewed in Obsidian</td>
+<td>Archivos Markdown, vistos en Obsidian</td>
 </tr>
 </tbody>
 </table></div>
-<h2 id="cost-prices-as-of-oct-2026">Cost (prices as of Oct 2026)</h2>
+<h2 id="costo-precios-a-oct-2026">Costo (precios a oct 2026)</h2>
 <ul>
-<li>Telegram bot: free.</li>
-<li>MinerU and Obsidian: free (Obsidian is free for personal use).</li>
-<li>Claude Code: included from Claude Pro, <strong>$20/month</strong>, which has usage limits. I use Max ($200/month) for
-everything I build, not just this.</li>
+<li>Bot de Telegram: gratis.</li>
+<li>MinerU y Obsidian: gratis (Obsidian es gratis para uso personal).</li>
+<li>Claude Code: incluido desde Claude Pro, <strong>$20/mes</strong>, que tiene límites de uso. Yo uso Max
+($200/mes) para todo lo que construyo, no solo para esto.</li>
 </ul>
-<h2 id="on-screen">On screen</h2>
-<p>A demo vault with open-access papers.</p>
-<h2 id="try-it">Try it</h2>
-<p>Builds a small local version of steps 2 and 4. A script files a PDF in <code>raw/</code> next to a
-<code>.source.md</code> note on where it came from. Then the agent writes the paper's wiki page: the
-citation, a one-line takeaway, and key claims, each with its page number. Needs Claude Code
-(or Codex), Python 3 and <code>pdftotext</code> (poppler-utils), run in an empty folder with one
-open-access PDF in it. It leaves out the Telegram inbox and the MinerU parser; add those once
-this works. Tested on 2026-10-16 with Claude Code 2.1.301. It passed on the first run in about
-2 minutes, on an open-access arXiv paper, and I checked the cited pages against the PDF.</p>
+<h2 id="en-pantalla">En pantalla</h2>
+<p>Una bóveda de demostración con papers de acceso abierto.</p>
+<h2 id="pruebalo">Pruébalo</h2>
+<p>Arma una versión local pequeña de los pasos 2 y 4. Un script archiva un PDF en <code>raw/</code> junto
+a una nota <code>.source.md</code> de dónde salió. Luego el agente escribe la página del paper en la
+wiki: la cita, la idea principal en una línea y las afirmaciones clave, cada una con su
+número de página. Necesita Claude Code (o Codex), Python 3 y <code>pdftotext</code> (poppler-utils),
+y se corre en una carpeta vacía con un PDF de acceso abierto adentro. Deja fuera la bandeja
+de Telegram y el parser MinerU; agrégalos cuando esto funcione. Probado el 2026-10-16 con
+Claude Code 2.1.301. Pasó a la primera, en unos 2 minutos, con un paper de arXiv de acceso
+abierto, y revisé las páginas citadas contra el PDF.</p>
+<p>El prompt va en inglés, que es como lo probé.</p>
 <pre><code class="language-text">Build a tiny &quot;paper inbox -&gt; wiki&quot; in this folder. Needs Python 3; to read PDFs use your own PDF reading or `pdftotext` (poppler-utils). I have put one open-access PDF in this folder.
 
 1. Create `raw/` (filed sources, never edited after filing), `wiki/sources/` and `wiki/concepts/`. Add two short concept pages to `wiki/concepts/`: `multi-agent-systems.md` and `tool-use.md` (title + two lines each).
@@ -86,26 +89,25 @@ this works. Tested on 2026-10-16 with Claude Code 2.1.301. It passed on the firs
 Done when: the sha256 of `raw/test/&lt;file&gt;.pdf` matches the one in its .source.md, the source page has all five sections, every key claim ends with a page number, and every [[link]] has a file in `wiki/concepts/`.
 Left out on purpose: the phone inbox (e.g. a Telegram bot) and a full PDF parser for tables, equations and figures (e.g. MinerU).
 </code></pre>
-<h2 id="gotchas">Gotchas</h2>
+<h2 id="ojo-con-esto">Ojo con esto</h2>
 <ul>
-<li><strong>MinerU 3.4 labels plots <code>chart</code>, not <code>image</code>.</strong> A bridge that only copies <code>image</code> blocks
-silently drops every plot.</li>
-<li><strong><code>pdftext</code> 0.7.1 crashed MinerU 3.4.0</strong> on one paper. Pinning <code>pdftext</code> below 0.7 fixed it.</li>
-<li><strong>Without Pillow, the logo/photo size filter saw every image as 0x0</strong>, so it skipped nothing.</li>
-<li><strong>A size/shape &quot;is it a headshot?&quot; filter caught only 5 of 13 author photos</strong> in one paper,
-because taller portraits pass as figures. Never trust it without checking.</li>
-<li><strong>Rename the PDF before filing it</strong> (e.g. <code>author-year-topic.pdf</code>). The page is named after
-the file, so two files called <code>paper.pdf</code> would collide. (Found while testing the prompt.)</li>
-<li><strong>&quot;(p. 4)&quot; means the PDF's 4th page.</strong> In a journal reprint, that may not be the number
-printed on the page. (Found while testing the prompt.)</li>
+<li><strong>MinerU 3.4 etiqueta los gráficos como <code>chart</code>, no como <code>image</code>.</strong> Un puente que solo
+copia bloques <code>image</code> bota todos los gráficos sin avisar.</li>
+<li><strong><code>pdftext</code> 0.7.1 hizo caer a MinerU 3.4.0</strong> con un paper. Fijar <code>pdftext</code> por debajo
+de 0.7 lo arregló.</li>
+<li><strong>Sin Pillow, el filtro de tamaño para logos y fotos veía todas las imágenes como 0x0</strong>,
+así que no se saltaba ninguna.</li>
+<li><strong>Un filtro de tamaño y forma para detectar &quot;¿es una foto de carnet?&quot; atrapó solo 5 de 13
+fotos de autores</strong> en un paper, porque los retratos más altos pasan por figuras. Nunca
+confíes en él sin revisar.</li>
+<li><strong>Cámbiale el nombre al PDF antes de archivarlo</strong> (por ejemplo <code>author-year-topic.pdf</code>).
+La página se llama como el archivo, así que dos archivos llamados <code>paper.pdf</code> chocarían.
+(Lo encontré al probar el prompt.)</li>
+<li><strong>&quot;(p. 4)&quot; significa la 4.ª página del PDF.</strong> En una separata de revista, puede no ser el
+número impreso en la página. (Lo encontré al probar el prompt.)</li>
 </ul>
 <hr />
-<p><strong>En español:</strong> le mando un paper a un bot de Telegram; en mi computadora se guarda con una
-nota de origen, un parser saca texto, tablas, ecuaciones y figuras, y un agente escribe la
-página de la wiki y la conecta con lo que ya sé. El parser corre en mi computadora, así que
-leer el PDF no gasta tokens. Medido en la grabación: 4 min 9 s. Costo
-mínimo: Claude Pro, $20/mes, con límites de uso (precios a oct 2026).</p>
-<p><strong>Pruébalo:</strong> el prompt de &quot;Try it&quot; (en inglés) arma una versión pequeña: archiva el
-PDF con su nota de origen y escribe la página con cada afirmación atada a su página. Probado
-el 2026-10-16.</p>
+<p><strong>In English:</strong> I send a paper to a Telegram bot; a parser on my own computer reads it with
+no AI tokens, and an agent writes the wiki page with each claim tied to its page. Measured:
+4 min 9 s. Minimum cost: Claude Pro, $20/month, with usage limits (prices as of Oct 2026).</p>
 <div class="post-next"><a href="../index.html">← Todas las notas</a><a href="../../recursos/index.html">Recursos ↗</a></div></article></div></main><footer class="site-footer"><div class="wrap"><div class="footer-inner"><a class="wordmark" href="../../index.html">linnet builds.</a><span class="footer-note">Hecho, probado y contado.</span><div class="footer-links"><a href="https://www.instagram.com/linnetbuilds/">Instagram</a><a href="https://www.youtube.com/@linnetbuilds">YouTube</a><a href="https://github.com/linnetbuilds/notes">GitHub</a></div></div><p class="footer-bottom">@linnetbuilds · Notas abiertas. Sin dejar tu correo. · <a href="../../../assets/licenses/index.txt">Licencias de fuentes</a></p></div></footer></body></html>

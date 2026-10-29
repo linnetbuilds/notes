@@ -1,69 +1,65 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Linnet Builds | A power cut should not erase the work</title><meta name="description" content="Built, tried, written down."><link rel="canonical" href="https://linnetbuilds.github.io/notes/notes/r02-power-cuts/"><link rel="alternate" hreflang="es" href="https://linnetbuilds.github.io/notes/es/notas/r02-power-cuts/index.html"><meta property="og:title" content="Linnet Builds | A power cut should not erase the work"><meta property="og:type" content="article"><meta property="og:url" content="https://linnetbuilds.github.io/notes/notes/r02-power-cuts/"><meta property="og:image" content="https://linnetbuilds.github.io/notes/assets/social-card.png"><meta property="og:description" content="Built, tried, written down."><link rel="icon" href="../../assets/mark.png"><link rel="stylesheet" href="../../assets/site.css"><script defer src="../../assets/site.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="../../index.html"><img src="../../assets/mark.png" alt="" width="36" height="36">linnet builds.</a><nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Notes</a><a href="../../resources/index.html">Resources</a><a href="../../about/index.html">About</a><a class="github-link" href="https://github.com/linnetbuilds/notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.2.8 3.28.12.1-.73.4-1.23.72-1.52-2.49-.28-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 5.35c.95 0 1.9.13 2.79.38 2.13-1.44 3.07-1.15 3.07-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.26-5.12 5.54.4.35.76 1.03.76 2.08v3.92c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>GitHub</a></nav><a class="lang-link" href="../../es/notas/r02-power-cuts/index.html" lang="es" hreflang="es" aria-label="Leer en español"><strong>EN</strong> / ES</a></div></header>
-<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notes</a> / R02</p><h1>A power cut should not erase the work</h1><div class="article-meta"><span>2026-10-28</span><span>R02 · ES</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R02-power-cuts.md">View on GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">In this note</p><ol><li><a href="#que-hace">Qué hace</a></li><li><a href="#medido">Medido</a></li><li><a href="#herramientas-y-costo-precios-a-oct-2026">Herramientas y costo (precios a oct 2026)</a></li><li><a href="#try-it">Try it</a></li><li><a href="#gotchas">Gotchas</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R02-power-cuts.md">View on GitHub ↗</a></aside><article class="prose" lang="es"><p class="original-language">This note is in Spanish, with an English summary below.</p><p>Un corte de luz puede dejarte un archivo que existe, pero vacío. Me pasó. Esto es lo que
-hago ahora.</p>
-<h2 id="que-hace">Qué hace</h2>
-<p>Cuando se va la luz, la computadora se reinicia y los trabajos largos se mueren. Esto los
-hace volver solos:</p>
+<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notes</a> / R02</p><h1>A power cut should not erase the work</h1><div class="article-meta"><span>2026-10-28</span><span>R02 · EN</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R02-power-cuts.md">View on GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">In this note</p><ol><li><a href="#what-it-does">What it does</a></li><li><a href="#measured">Measured</a></li><li><a href="#tools-and-cost-prices-as-of-oct-2026">Tools and cost (prices as of Oct 2026)</a></li><li><a href="#try-it">Try it</a></li><li><a href="#gotchas">Gotchas</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R02-power-cuts.md">View on GitHub ↗</a></aside><article class="prose" lang="en"><p>A power cut can leave you a file that exists, but is empty. It happened to me. This is what I
+do now.</p>
+<h2 id="what-it-does">What it does</h2>
+<p>When the power goes, the computer restarts and long jobs die. This brings them back on their
+own:</p>
 <ol>
 <li>
-<p><strong>Un archivito por trabajo</strong>, de dos líneas: dónde corre y qué comando ejecuta.</p>
+<p><strong>A small file per job</strong>, two lines: where it runs and what command it runs.</p>
 <pre><code>WORKDIR=/home/demo/jobs/train
 CMD=python3 train.py
 </code></pre>
 </li>
 <li>
-<p><strong>Un script</strong> arranca cada trabajo sin terminar como un servicio del sistema (systemd),
-lo reintenta hasta <strong>6 veces</strong> y, cuando termina bien, deja una marca de listo
-(<code>state/&lt;nombre&gt;.done</code>).</p>
+<p><strong>A script</strong> starts every unfinished job as a system service (systemd), retries it up to
+<strong>6 times</strong> and, when it finishes cleanly, leaves a done marker (<code>state/&lt;name&gt;.done</code>).</p>
 </li>
 <li>
-<p><strong>Cron</strong> corre ese script al prender la máquina (2 minutos después del arranque) y
-<strong>cada 30 minutos</strong>.</p>
+<p><strong>Cron</strong> runs that script when the machine boots (2 minutes after startup) and <strong>every 30
+minutes</strong>.</p>
 </li>
 <li>
-<p><strong>El trabajo guarda su avance</strong>, así que vuelve desde donde se quedó, no desde cero.</p>
+<p><strong>The job saves its progress</strong>, so it comes back from where it stopped, not from zero.</p>
 </li>
 <li>
-<p><strong>Escritura atómica:</strong> los resultados se escriben en un archivo temporal, se fuerzan al
-disco (fsync) y recién entonces se renombran. Un corte a la mitad deja el archivo
-anterior completo, nunca uno vacío.</p>
+<p><strong>Atomic writes:</strong> results go to a temporary file, are forced to disk (fsync) and only then
+renamed. A cut halfway leaves the previous file complete, never an empty one.</p>
 </li>
 </ol>
-<h2 id="medido">Medido</h2>
-<p>Grabación del 2026-10-18 en la demo:</p>
+<h2 id="measured">Measured</h2>
+<p>Demo recording, 2026-10-18:</p>
 <ul>
-<li><strong>Corte:</strong> apagado en el paso 50 de 180 (18:10:44). El script volvió a arrancar el
-trabajo y a las 18:14:24 siguió desde el paso 50, sin que nadie tocara nada.</li>
-<li><strong>Escritura atómica:</strong> un script que corta la escritura a la mitad. Sin escritura
-atómica, <code>results.json</code> quedó con <strong>0 bytes</strong>. Con ella, el archivo anterior quedó
-entero (56 bytes).</li>
+<li><strong>Power cut:</strong> switched off at step 50 of 180 (18:10:44). The script started the job again
+and at 18:14:24 it continued from step 50, with nobody touching anything.</li>
+<li><strong>Atomic writes:</strong> a script that cuts a write in half. Without atomic writes, <code>results.json</code>
+ended up at <strong>0 bytes</strong>. With them, the previous file stayed whole (56 bytes).</li>
 </ul>
-<figure><img src="../../files/posts/img/R02-resume.jpg" alt="La terminal de la demo después del corte: el registro del trabajo llega al paso 50 de 180 a las 18:10:44 y a las 18:14:24 sigue desde el paso 50" loading="lazy" /><figcaption>La terminal de la demo después del corte: el registro del trabajo llega al paso 50 de 180 a las 18:10:44 y a las 18:14:24 sigue desde el paso 50</figcaption></figure>
-<h2 id="herramientas-y-costo-precios-a-oct-2026">Herramientas y costo (precios a oct 2026)</h2>
-<p>Linux, systemd, cron y Python. <strong>$0</strong>: todo viene
-con el sistema.</p>
-<p>El código se publica en este GitHub en diciembre, como <code>resume-runner</code>.</p>
+<figure><img src="../../files/posts/img/R02-resume.jpg" alt="The demo terminal after the cut: the job log reaches step 50 of 180 at 18:10:44 and at 18:14:24 continues from step 50" loading="lazy" /><figcaption>The demo terminal after the cut: the job log reaches step 50 of 180 at 18:10:44 and at 18:14:24 continues from step 50</figcaption></figure>
+<h2 id="tools-and-cost-prices-as-of-oct-2026">Tools and cost (prices as of Oct 2026)</h2>
+<p>Linux, systemd, cron and Python. <strong>$0</strong>: it all comes with the system.</p>
+<p>The code goes public on this GitHub in December, as <code>resume-runner</code>.</p>
 <h2 id="try-it">Try it</h2>
-<p>Para probarlo, pega este prompt (en inglés) en Claude Code o Codex, en una carpeta vacía.</p>
-<p>El prompt arma una versión pequeña del runner:</p>
+<p>Paste this prompt into Claude Code or Codex, in an empty folder.</p>
+<p>It builds a small version of the runner:</p>
 <ul>
-<li>archivos <code>.job</code> de dos líneas;</li>
-<li>un script que arranca cada trabajo sin terminar como servicio de usuario de systemd, con
-hasta 6 intentos y la marca <code>state/&lt;nombre&gt;.done</code>;</li>
-<li>un trabajo de ejemplo que cuenta hasta 30 y guarda su avance con escritura atómica;</li>
-<li>las dos líneas de cron (al arrancar + 2 min, y cada 30 min). El agente te las muestra y
-<strong>no las instala sin preguntarte</strong>.</li>
+<li>two-line <code>.job</code> files;</li>
+<li>a script that starts every unfinished job as a systemd user service, with up to 6 tries and
+the <code>state/&lt;name&gt;.done</code> marker;</li>
+<li>an example job that counts to 30 and saves its progress with atomic writes;</li>
+<li>the two cron lines (at boot + 2 min, and every 30 min). The agent shows them to you and
+<strong>does not install them without asking</strong>.</li>
 </ul>
-<p>Necesita Linux con systemd y cron (WSL2 con systemd activado sirve) y Python 3. Deja fuera las
-notificaciones, las dependencias entre trabajos y las colas. Probado el 2026-10-16 con Claude
-Code 2.1.301: pasó a la primera, en menos de 2 minutos. En la prueba le pedí que no instalara
-nada. El runner lo probé yo aparte, con trabajos desechables:</p>
+<p>Needs Linux with systemd and cron (WSL2 with systemd enabled works) and Python 3. It leaves out
+notifications, job dependencies and queues. Tested 2026-10-16 with Claude Code 2.1.301: it
+passed on the first run, in under 2 minutes. In the test I asked it not to install anything. I
+tested the runner myself separately, with throwaway jobs:</p>
 <ul>
-<li>arrancó el trabajo y no lo duplicó;</li>
-<li>tras detenerlo en el paso 7, siguió desde el paso 7;</li>
-<li>dejó la marca de listo;</li>
-<li>un trabajo que siempre falla se rindió a los 6 intentos.</li>
+<li>it started the job and didn't start a second copy;</li>
+<li>after I stopped it at step 7, it continued from step 7;</li>
+<li>it left the done marker;</li>
+<li>a job that always fails gave up after 6 tries.</li>
 </ul>
 <pre><code class="language-text">Build a small &quot;resume runner&quot; in this folder so long jobs come back after a reboot or power cut. Needs Linux with systemd user services and cron (WSL2 with systemd enabled works) and Python 3, standard library only. Use absolute paths everywhere, since cron does not start in this folder.
 
@@ -82,26 +78,22 @@ Left out on purpose: notifications, job dependencies, queues.
 </code></pre>
 <h2 id="gotchas">Gotchas</h2>
 <ul>
-<li><strong>Un corte de luz dejó un archivo de resultados que existía pero estaba vacío.</strong> Por eso la
-escritura atómica: archivo temporal, fsync, renombrar.</li>
-<li><strong>El script espera 120 s después del arranque, a propósito.</strong> Si lo grabas, corta la espera
-en el video; no la acortes en el crontab.</li>
-<li><strong>Si lo corres en WSL, cerrar todas las ventanas de WSL lo apaga</strong>, igual que un corte de luz.</li>
-<li><strong>Los servicios de usuario de systemd solo corren con tu sesión abierta</strong>, salvo que actives
-<code>loginctl enable-linger &lt;usuario&gt;</code>. Sin eso, después de un reinicio nada arranca hasta que
-inicias sesión. (Lo señaló Claude Code en la prueba.)</li>
-<li><strong>Cada reinicio gasta un intento</strong>, también un <code>systemctl --user stop</code> o un apagón. Un trabajo
-cortado 6 veces se rinde aunque nunca haya fallado. Para empezar la cuenta de nuevo, borra
-<code>state/&lt;nombre&gt;.tries</code>. (Visto en la prueba.)</li>
+<li><strong>A power cut left a results file that existed but was empty.</strong> That's why the atomic writes:
+temporary file, fsync, rename.</li>
+<li><strong>The script waits 120 s after boot, on purpose.</strong> If you record it, cut the wait in the
+video; don't shorten it in the crontab.</li>
+<li><strong>If you run it in WSL, closing every WSL window shuts it down</strong>, just like a power cut.</li>
+<li><strong>systemd user services only run while you are logged in</strong>, unless you turn on
+<code>loginctl enable-linger &lt;user&gt;</code>. Without it, after a restart nothing starts until you log in.
+(Claude Code pointed this out in the test.)</li>
+<li><strong>Every restart uses up a try</strong>, including a <code>systemctl --user stop</code> or a blackout. A job cut
+6 times gives up even if it never failed. To start the count again, delete
+<code>state/&lt;name&gt;.tries</code>. (Seen in the test.)</li>
 </ul>
 <hr />
-<p><strong>In English:</strong> each long job is a two-line file. A script starts it as a systemd service,
-retries up to 6 times and leaves a done marker; cron runs the script at boot and every 30
-minutes; results are written atomically (temp file, fsync, rename). Measured on a real cut:
-the job resumed at step 50 of 180 with no input. Without atomic writes, an interrupted
-write left a 0-byte file. Cost: $0. Code coming in December.</p>
-<p><strong>Try it:</strong> the prompt above builds a small version: job files, systemd user services, up
-to 6 tries, a done marker and atomic writes. It shows the cron lines and asks before
-installing them. Tested 2026-10-16. The gotchas cover WSL, lingering and how retries are
-counted.</p>
+<p><strong>En español:</strong> cada trabajo largo es un archivo de dos líneas. Un script lo arranca como
+servicio de systemd, lo reintenta hasta 6 veces y deja una marca de listo; cron corre el script
+al prender y cada 30 minutos; los resultados se escriben de forma atómica. En un corte real, el
+trabajo siguió en el paso 50 de 180 sin que nadie tocara nada. Costo: $0. La versión completa
+en español está en el botón ES.</p>
 <div class="post-next"><a href="../index.html">← All notes</a><a href="../../resources/index.html">Resources ↗</a></div></article></div></main><footer class="site-footer"><div class="wrap"><div class="footer-inner"><a class="wordmark" href="../../index.html">linnet builds.</a><span class="footer-note">Built, tried, written down.</span><div class="footer-links"><a href="https://www.instagram.com/linnetbuilds/">Instagram</a><a href="https://www.youtube.com/@linnetbuilds">YouTube</a><a href="https://github.com/linnetbuilds/notes">GitHub</a></div></div><p class="footer-bottom">@linnetbuilds · Open notes. No email required. · <a href="../../assets/licenses/index.txt">Font licenses</a></p></div></footer></body></html>

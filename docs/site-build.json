@@ -1,21 +1,36 @@
 {
   "public_codes": [
+    "C01",
     "R02",
     "R01"
   ],
   "source_sha256": {
-    "posts/R02-power-cuts.md": "2cd6ec5d0adb14fdce511d9a1d3d46e72985cda538a0fdb0e35f939c3bf113fb",
-    "posts/R01-paper-to-wiki.md": "e82d40d42e2ab57666cdd2e1ebee29f81b52e25c0d9a68e6e83f6a5be9cfa1c0"
+    "posts/C01-agent-rules.md": "042165fb1ff737cb9628e7f78f0c4af5125a1af4c927b077b884aab857031862",
+    "resources/agent-rules/README.md": "9c21796a4585f1af825ab3802a9a008989403f5518a8fc2b0707be198a2fd6eb",
+    "resources/agent-rules/RULES.es.md": "c7402e8f631721874f0104ec3c820dae20ddc9a51a29892ef54fb3c2b5012736",
+    "resources/agent-rules/RULES.md": "ab4d7c7dd336cd771912d923e375be953b7321705bb794e395fe190be44acf81",
+    "posts/R02-power-cuts.md": "be90908f1c4183e521fc2926517061fafa4231b36687dcfda903cd43f99b9602",
+    "posts/R02-power-cuts.md#es": "bbf9023b9548f940b3ebe1a44def42b524c2f918005c83ef083a344409797a29",
+    "posts/R01-paper-to-wiki.md": "e82d40d42e2ab57666cdd2e1ebee29f81b52e25c0d9a68e6e83f6a5be9cfa1c0",
+    "posts/R01-paper-to-wiki.md#es": "e1787be85e72f71249034e96f60b4618965976b7099825480d4a8e7ab5073652"
   },
   "pages": [
     "about/index.html",
     "es/acerca/index.html",
+    "es/biblioteca/agent-rules/index.html",
+    "es/biblioteca/agent-rules/rules-es/index.html",
+    "es/biblioteca/agent-rules/rules/index.html",
     "es/index.html",
+    "es/notas/c01-agent-rules/index.html",
     "es/notas/index.html",
     "es/notas/r01-paper-to-wiki/index.html",
     "es/notas/r02-power-cuts/index.html",
     "es/recursos/index.html",
     "index.html",
+    "library/agent-rules/index.html",
+    "library/agent-rules/rules-es/index.html",
+    "library/agent-rules/rules/index.html",
+    "notes/c01-agent-rules/index.html",
     "notes/index.html",
     "notes/r01-paper-to-wiki/index.html",
     "notes/r02-power-cuts/index.html",

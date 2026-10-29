@@ -1,0 +1,17 @@
+# One phrase per line, matched case-insensitively as whole words. Read by hooks/banned_words.py.
+# The openers mirror the Rules section of CLAUDE.md; the rest are filler the style rules ban.
+great question
+certainly
+absolutely
+i hope this helps
+as an ai
+let me dive in
+in today's fast-paced world
+delve
+delves
+leverage
+seamless
+seamlessly
+groundbreaking
+game-changer
+—

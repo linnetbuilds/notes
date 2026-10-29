@@ -1,71 +1,67 @@
-# R02: Un archivo que existe, pero vacío / A power cut can leave an empty file
+# R02: A file that exists, but empty
 
-**Video:** 2026-10-28 · voz en español
+**Video:** 2026-10-28 · Spanish voice
 
-Un corte de luz puede dejarte un archivo que existe, pero vacío. Me pasó. Esto es lo que
-hago ahora.
+A power cut can leave you a file that exists, but is empty. It happened to me. This is what I
+do now.
 
-## Qué hace
+## What it does
 
-Cuando se va la luz, la computadora se reinicia y los trabajos largos se mueren. Esto los
-hace volver solos:
+When the power goes, the computer restarts and long jobs die. This brings them back on their
+own:
 
-1. **Un archivito por trabajo**, de dos líneas: dónde corre y qué comando ejecuta.
+1. **A small file per job**, two lines: where it runs and what command it runs.
 
    ```
    WORKDIR=/home/demo/jobs/train
    CMD=python3 train.py
    ```
 
-2. **Un script** arranca cada trabajo sin terminar como un servicio del sistema (systemd),
-   lo reintenta hasta **6 veces** y, cuando termina bien, deja una marca de listo
-   (`state/<nombre>.done`).
-3. **Cron** corre ese script al prender la máquina (2 minutos después del arranque) y
-   **cada 30 minutos**.
-4. **El trabajo guarda su avance**, así que vuelve desde donde se quedó, no desde cero.
-5. **Escritura atómica:** los resultados se escriben en un archivo temporal, se fuerzan al
-   disco (fsync) y recién entonces se renombran. Un corte a la mitad deja el archivo
-   anterior completo, nunca uno vacío.
+2. **A script** starts every unfinished job as a system service (systemd), retries it up to
+   **6 times** and, when it finishes cleanly, leaves a done marker (`state/<name>.done`).
+3. **Cron** runs that script when the machine boots (2 minutes after startup) and **every 30
+   minutes**.
+4. **The job saves its progress**, so it comes back from where it stopped, not from zero.
+5. **Atomic writes:** results go to a temporary file, are forced to disk (fsync) and only then
+   renamed. A cut halfway leaves the previous file complete, never an empty one.
 
-## Medido
+## Measured
 
-Grabación del 2026-10-18 en la demo:
+Demo recording, 2026-10-18:
 
-- **Corte:** apagado en el paso 50 de 180 (18:10:44). El script volvió a arrancar el
-  trabajo y a las 18:14:24 siguió desde el paso 50, sin que nadie tocara nada.
-- **Escritura atómica:** un script que corta la escritura a la mitad. Sin escritura
-  atómica, `results.json` quedó con **0 bytes**. Con ella, el archivo anterior quedó
-  entero (56 bytes).
+- **Power cut:** switched off at step 50 of 180 (18:10:44). The script started the job again
+  and at 18:14:24 it continued from step 50, with nobody touching anything.
+- **Atomic writes:** a script that cuts a write in half. Without atomic writes, `results.json`
+  ended up at **0 bytes**. With them, the previous file stayed whole (56 bytes).
 
-![La terminal de la demo después del corte: el registro del trabajo llega al paso 50 de 180 a las 18:10:44 y a las 18:14:24 sigue desde el paso 50](img/R02-resume.jpg)
+![The demo terminal after the cut: the job log reaches step 50 of 180 at 18:10:44 and at 18:14:24 continues from step 50](img/R02-resume.jpg)
 
-## Herramientas y costo (precios a oct 2026)
+## Tools and cost (prices as of Oct 2026)
 
-Linux, systemd, cron y Python. **$0**: todo viene
-con el sistema.
+Linux, systemd, cron and Python. **$0**: it all comes with the system.
 
-El código se publica en este GitHub en diciembre, como `resume-runner`.
+The code goes public on this GitHub in December, as `resume-runner`.
 
 ## Try it
 
-Para probarlo, pega este prompt (en inglés) en Claude Code o Codex, en una carpeta vacía.
+Paste this prompt into Claude Code or Codex, in an empty folder.
 
-El prompt arma una versión pequeña del runner:
-- archivos `.job` de dos líneas;
-- un script que arranca cada trabajo sin terminar como servicio de usuario de systemd, con
-  hasta 6 intentos y la marca `state/<nombre>.done`;
-- un trabajo de ejemplo que cuenta hasta 30 y guarda su avance con escritura atómica;
-- las dos líneas de cron (al arrancar + 2 min, y cada 30 min). El agente te las muestra y
-  **no las instala sin preguntarte**.
+It builds a small version of the runner:
+- two-line `.job` files;
+- a script that starts every unfinished job as a systemd user service, with up to 6 tries and
+  the `state/<name>.done` marker;
+- an example job that counts to 30 and saves its progress with atomic writes;
+- the two cron lines (at boot + 2 min, and every 30 min). The agent shows them to you and
+  **does not install them without asking**.
 
-Necesita Linux con systemd y cron (WSL2 con systemd activado sirve) y Python 3. Deja fuera las
-notificaciones, las dependencias entre trabajos y las colas. Probado el 2026-10-16 con Claude
-Code 2.1.301: pasó a la primera, en menos de 2 minutos. En la prueba le pedí que no instalara
-nada. El runner lo probé yo aparte, con trabajos desechables:
-- arrancó el trabajo y no lo duplicó;
-- tras detenerlo en el paso 7, siguió desde el paso 7;
-- dejó la marca de listo;
-- un trabajo que siempre falla se rindió a los 6 intentos.
+Needs Linux with systemd and cron (WSL2 with systemd enabled works) and Python 3. It leaves out
+notifications, job dependencies and queues. Tested 2026-10-16 with Claude Code 2.1.301: it
+passed on the first run, in under 2 minutes. In the test I asked it not to install anything. I
+tested the runner myself separately, with throwaway jobs:
+- it started the job and didn't start a second copy;
+- after I stopped it at step 7, it continued from step 7;
+- it left the done marker;
+- a job that always fails gave up after 6 tries.
 
 ```text
 Build a small "resume runner" in this folder so long jobs come back after a reboot or power cut. Needs Linux with systemd user services and cron (WSL2 with systemd enabled works) and Python 3, standard library only. Use absolute paths everywhere, since cron does not start in this folder.
@@ -86,27 +82,22 @@ Left out on purpose: notifications, job dependencies, queues.
 
 ## Gotchas
 
-- **Un corte de luz dejó un archivo de resultados que existía pero estaba vacío.** Por eso la
-  escritura atómica: archivo temporal, fsync, renombrar.
-- **El script espera 120 s después del arranque, a propósito.** Si lo grabas, corta la espera
-  en el video; no la acortes en el crontab.
-- **Si lo corres en WSL, cerrar todas las ventanas de WSL lo apaga**, igual que un corte de luz.
-- **Los servicios de usuario de systemd solo corren con tu sesión abierta**, salvo que actives
-  `loginctl enable-linger <usuario>`. Sin eso, después de un reinicio nada arranca hasta que
-  inicias sesión. (Lo señaló Claude Code en la prueba.)
-- **Cada reinicio gasta un intento**, también un `systemctl --user stop` o un apagón. Un trabajo
-  cortado 6 veces se rinde aunque nunca haya fallado. Para empezar la cuenta de nuevo, borra
-  `state/<nombre>.tries`. (Visto en la prueba.)
+- **A power cut left a results file that existed but was empty.** That's why the atomic writes:
+  temporary file, fsync, rename.
+- **The script waits 120 s after boot, on purpose.** If you record it, cut the wait in the
+  video; don't shorten it in the crontab.
+- **If you run it in WSL, closing every WSL window shuts it down**, just like a power cut.
+- **systemd user services only run while you are logged in**, unless you turn on
+  `loginctl enable-linger <user>`. Without it, after a restart nothing starts until you log in.
+  (Claude Code pointed this out in the test.)
+- **Every restart uses up a try**, including a `systemctl --user stop` or a blackout. A job cut
+  6 times gives up even if it never failed. To start the count again, delete
+  `state/<name>.tries`. (Seen in the test.)
 
 ---
 
-**In English:** each long job is a two-line file. A script starts it as a systemd service,
-retries up to 6 times and leaves a done marker; cron runs the script at boot and every 30
-minutes; results are written atomically (temp file, fsync, rename). Measured on a real cut:
-the job resumed at step 50 of 180 with no input. Without atomic writes, an interrupted
-write left a 0-byte file. Cost: $0. Code coming in December.
-
-**Try it:** the prompt above builds a small version: job files, systemd user services, up
-to 6 tries, a done marker and atomic writes. It shows the cron lines and asks before
-installing them. Tested 2026-10-16. The gotchas cover WSL, lingering and how retries are
-counted.
+**En español:** cada trabajo largo es un archivo de dos líneas. Un script lo arranca como
+servicio de systemd, lo reintenta hasta 6 veces y deja una marca de listo; cron corre el script
+al prender y cada 30 minutos; los resultados se escriben de forma atómica. En un corte real, el
+trabajo siguió en el paso 50 de 180 sin que nadie tocara nada. Costo: $0. La versión completa
+en español está en el botón ES.
