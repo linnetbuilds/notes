@@ -7,7 +7,7 @@ The rules my AI agents follow. Each one exists because something went wrong firs
 ![Carousel cover: 6 rules, each from a mistake. The rules my AI agents follow, and what went wrong first](img/C01-cover.jpg)
 
 1. **Fetch the record itself.** A summary can omit context or get a number wrong. Before citing a
-   number, date or quotation, retrieve the original record. See R03.
+   number, date or quotation, retrieve the original record. See [R03](R03-no-summaries.md).
 2. **Answer first.** No praising the question, no narrating the method.
 3. **Confess once.** One clause, then the correct value.
 4. **Cut every draft in half.** Drafts that followed every other rule were still too long.

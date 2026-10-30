@@ -1,0 +1,14 @@
+Set up a "no numbers from summaries" rule and a record fetcher in this folder. Needs Python 3 and internet.
+
+1. Create `CLAUDE.md` and `AGENTS.md` (same text, so Claude Code and Codex both read it) containing exactly this rule:
+
+   ## Records, not summaries
+   - No number, date, identifier (DOI, ISBN, ID), quotation or status (published, retracted, accepted) in these notes may come from a web search result or a page summary.
+   - A summary may only decide which sources are worth reading.
+   - For anything that matters, fetch the record itself, save it under `records/`, and cite the saved file.
+   - For a paper, the record is its Crossref entry: run `python3 fetch_record.py <DOI>`.
+
+2. Write `fetch_record.py DOI` (standard library only): GET `https://api.crossref.org/works/<DOI>` with a User-Agent that includes `mailto:you@example.org`; save the `message` object as `records/<DOI with / replaced by _>.json`, without its `reference` list (it is full of other people's names); print the DOI, the title, and the `published` date as YYYY-MM-DD (or YYYY-MM / YYYY if that is all the record has). Exit with a clear message on a 404 or network error.
+
+Done when: `python3 fetch_record.py 10.1007/s11704-024-40231-1` prints the date 2024-03-22, the saved JSON has no `reference` key, and both CLAUDE.md and AGENTS.md contain the rule.
+Left out on purpose: OpenAlex, arXiv and non-paper records; add a fetcher per source the same way.

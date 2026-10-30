@@ -1,11 +1,15 @@
 {
   "public_codes": [
+    "R03",
     "C01",
     "R02",
     "R01"
   ],
   "source_sha256": {
-    "posts/C01-agent-rules.md": "042165fb1ff737cb9628e7f78f0c4af5125a1af4c927b077b884aab857031862",
+    "posts/R03-no-summaries.md": "7270d55aa41ab151b87dbb144f26c6c3535ffbdf73f0aef22cc78ae64130461e",
+    "posts/R03-no-summaries.md#es": "327f10e8caadee554ba09319d86a49be36035bdf3904442adcf7f6a634f1e6c5",
+    "posts/C01-agent-rules.md": "938e05903544c01087f10dda875b9bec2987187d217ffa005ad66a084bbccc2c",
+    "posts/C01-agent-rules.md#es": "bbe50f7f2c470c6b0fefbd79e8a8818457222d60bf490447b4b27052471b14c3",
     "resources/agent-rules/README.md": "9c21796a4585f1af825ab3802a9a008989403f5518a8fc2b0707be198a2fd6eb",
     "resources/agent-rules/RULES.es.md": "c7402e8f631721874f0104ec3c820dae20ddc9a51a29892ef54fb3c2b5012736",
     "resources/agent-rules/RULES.md": "ab4d7c7dd336cd771912d923e375be953b7321705bb794e395fe190be44acf81",
@@ -25,6 +29,7 @@
     "es/notas/index.html",
     "es/notas/r01-paper-to-wiki/index.html",
     "es/notas/r02-power-cuts/index.html",
+    "es/notas/r03-no-summaries/index.html",
     "es/recursos/index.html",
     "index.html",
     "library/agent-rules/index.html",
@@ -34,6 +39,7 @@
     "notes/index.html",
     "notes/r01-paper-to-wiki/index.html",
     "notes/r02-power-cuts/index.html",
+    "notes/r03-no-summaries/index.html",
     "resources/index.html"
   ],
   "future_drafts_included": false

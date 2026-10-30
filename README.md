@@ -25,6 +25,7 @@ Everything here stays free, no email needed. / Todo lo de aquí sigue gratis, si
 | [R01](posts/R01-paper-to-wiki.md) | 2026-10-26 | Parser reads, AI writes: a paper to a wiki page |
 | [R02](posts/R02-power-cuts.md) | 2026-10-28 | Un archivo que existe, pero vacío / Jobs that survive power cuts |
 | [C01](posts/C01-agent-rules.md) | 2026-10-29 | 6 rules, each from a mistake |
+| [R03](posts/R03-no-summaries.md) | 2026-10-30 | It reads a summary, not the page |
 
 New notes are added as the posts go out.
 
