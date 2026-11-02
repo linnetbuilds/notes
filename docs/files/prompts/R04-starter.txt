@@ -1,0 +1,12 @@
+Build a tiny offline-first bilingual food log in this folder: a single-page web app (`index.html`, `app.js`, `sw.js`, `manifest.json`), plain JavaScript, no framework, no build step, no backend. Needs Python 3 (to serve it) and a modern browser.
+
+- A built-in list of 10 foods, each with an English and a Spanish name (e.g. pumpkin / zapallo, banana / guineo, avocado / aguacate), plus "add food" that asks for both names.
+- Log an entry: food, date and time, amount (a little / half / all), optional note. Store the food id and both names with the entry, never just the displayed text.
+- A language toggle (English / Español) per device, remembered in localStorage. Switching changes every label and every food name on screen, including entries already logged; stored data does not change.
+- Entries saved in IndexedDB, listed newest first, each with a delete button.
+- A service worker caches the app shell so the app loads offline after the first visit.
+- Give buttons, inputs and list items `data-testid` attributes.
+Keep it small: under 300 lines in total.
+
+Done when: served with `python3 -m http.server 8000`, you can log an entry, switch to Español and see the food's Spanish name, then go offline (browser DevTools > Network > Offline), reload, and the entry is still there.
+Left out on purpose: sync between devices, several caregivers, reactions and allergens, a doctor summary.
