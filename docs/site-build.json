@@ -1,5 +1,6 @@
 {
   "public_codes": [
+    "C02",
     "R04",
     "R03",
     "C01",
@@ -7,6 +8,8 @@
     "R01"
   ],
   "source_sha256": {
+    "posts/C02-pdf-to-wiki.md": "324140e8bae6eef7c79add088f69bb9e9d1c626f3a8a57cb71867cbe2532fe7f",
+    "posts/C02-pdf-to-wiki.md#es": "b2f324ab015b5277010e3d4d5e6e2a240c20a57f0f1cf15bf35b1b9190b92247",
     "posts/R04-baby-food-app.md": "e993724df0b529a540073865122a760a4029e22dc1e9a22a32e572986752cec2",
     "posts/R04-baby-food-app.md#es": "1d9a02d7433c62f821ebab8619ff2c1b90b38f45e0d56d0d51db6d8207af5679",
     "posts/R03-no-summaries.md": "7270d55aa41ab151b87dbb144f26c6c3535ffbdf73f0aef22cc78ae64130461e",
@@ -29,6 +32,7 @@
     "es/biblioteca/agent-rules/rules/index.html",
     "es/index.html",
     "es/notas/c01-agent-rules/index.html",
+    "es/notas/c02-pdf-to-wiki/index.html",
     "es/notas/index.html",
     "es/notas/r01-paper-to-wiki/index.html",
     "es/notas/r02-power-cuts/index.html",
@@ -40,6 +44,7 @@
     "library/agent-rules/rules-es/index.html",
     "library/agent-rules/rules/index.html",
     "notes/c01-agent-rules/index.html",
+    "notes/c02-pdf-to-wiki/index.html",
     "notes/index.html",
     "notes/r01-paper-to-wiki/index.html",
     "notes/r02-power-cuts/index.html",

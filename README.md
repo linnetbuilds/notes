@@ -27,6 +27,7 @@ Everything here stays free, no email needed. / Todo lo de aquí sigue gratis, si
 | [C01](posts/C01-agent-rules.md) | 2026-10-29 | 6 rules, each from a mistake |
 | [R03](posts/R03-no-summaries.md) | 2026-10-30 | It reads a summary, not the page |
 | [R04](posts/R04-baby-food-app.md) | 2026-11-02 | The free app told me nothing: a bilingual baby food tracker |
+| [C02](posts/C02-pdf-to-wiki.md) | 2026-11-05 | PDF to wiki page in 4 minutes |
 
 New notes are added as the posts go out.
 
