@@ -17,7 +17,7 @@ de R01, el 2026-10-18: **4 min 9 s** del celular a la página.
 5. **La wiki se pone al día:** el agente actualiza las páginas de conceptos que toca y marca
    las contradicciones. Una contradicción seria detiene la ingesta y me espera a mí.
 6. **Avisa de vuelta:** índice, registro y un resumen corto al celular. Un script nocturno,
-   sin nada de IA, rearma la bibliografía (ver R06) y el panel.
+   sin nada de IA, rearma la bibliografía (ver [R06](R06-bibliography.md)) y el panel.
 
 La IA de pago solo hace los pasos 4 y 5. Todo lo demás son scripts.
 

@@ -28,6 +28,7 @@ Everything here stays free, no email needed. / Todo lo de aquí sigue gratis, si
 | [R03](posts/R03-no-summaries.md) | 2026-10-30 | It reads a summary, not the page |
 | [R04](posts/R04-baby-food-app.md) | 2026-11-02 | The free app told me nothing: a bilingual baby food tracker |
 | [C02](posts/C02-pdf-to-wiki.md) | 2026-11-05 | PDF to wiki page in 4 minutes |
+| [R06](posts/R06-bibliography.md) | 2026-11-06 | Catch the wrong year in your references before you submit |
 
 New notes are added as the posts go out.
 

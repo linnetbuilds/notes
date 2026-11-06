@@ -1,0 +1,7 @@
+Write a Python script, check_bib.py, that reads my file references.bib. Use only the Python standard library.
+
+For every entry with a doi field, fetch its record from https://api.crossref.org/works/ followed by the DOI (send a User-Agent header that includes mailto: and my email), and compare title, year, journal, volume and pages with my entry. Ignore differences in capitalization and punctuation. For the year, use the record's print date, then its online date.
+
+Write a table to mismatches.md with: citation key, field, my value, Crossref value. Below the table, list the entries without a DOI, and the DOIs Crossref doesn't know (it answers 404; arXiv DOIs are registered at DataCite, not Crossref) instead of stopping.
+
+Do not change references.bib. Print one line: how many mismatches, how many without DOI, how many not in Crossref.

@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Linnet Builds | Catch the wrong year in your references</title><meta name="description" content="Built, tried, written down."><link rel="canonical" href="https://linnetbuilds.github.io/notes/notes/r06-bibliography/"><link rel="alternate" hreflang="es" href="https://linnetbuilds.github.io/notes/es/notas/r06-bibliography/index.html"><meta property="og:title" content="Linnet Builds | Catch the wrong year in your references"><meta property="og:type" content="article"><meta property="og:url" content="https://linnetbuilds.github.io/notes/notes/r06-bibliography/"><meta property="og:image" content="https://linnetbuilds.github.io/notes/assets/social-card.png"><meta property="og:description" content="Built, tried, written down."><link rel="icon" href="../../assets/mark.png"><link rel="stylesheet" href="../../assets/site.css"><script defer src="../../assets/site.js"></script></head><body>
+<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="../../index.html"><img src="../../assets/mark.png" alt="" width="36" height="36">linnet builds.</a><nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Notes</a><a href="../../resources/index.html">Resources</a><a href="../../about/index.html">About</a><a class="github-link" href="https://github.com/linnetbuilds/notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.2.8 3.28.12.1-.73.4-1.23.72-1.52-2.49-.28-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 5.35c.95 0 1.9.13 2.79.38 2.13-1.44 3.07-1.15 3.07-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.26-5.12 5.54.4.35.76 1.03.76 2.08v3.92c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>GitHub</a></nav><a class="lang-link" href="../../es/notas/r06-bibliography/index.html" lang="es" hreflang="es" aria-label="Leer en español"><strong>EN</strong> / ES</a></div></header>
+<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notes</a> / R06</p><h1>Catch the wrong year in your references</h1><div class="article-meta"><span>2026-11-06</span><span>R06 · EN</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R06-bibliography.md">View on GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">In this note</p><ol><li><a href="#the-three-steps">The three steps</a></li><li><a href="#measured">Measured</a></li><li><a href="#cost-prices-as-of-oct-2026">Cost (prices as of Oct 2026)</a></li><li><a href="#try-it">Try it</a></li><li><a href="#gotchas">Gotchas</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R06-bibliography.md">View on GitHub ↗</a></aside><article class="prose" lang="en"><p>One wrong year in a reference list is easy to miss, and reviewers love finding it. This note
+is the three steps from the video, plus the exact prompt, tested.</p>
+<h2 id="the-three-steps">The three steps</h2>
+<ol>
+<li><strong>Export your references as a BibTeX file</strong> (<code>references.bib</code>), with each paper's DOI, its
+permanent ID. Zotero, Mendeley and most reference managers can export one.</li>
+<li><strong>Ask your AI for a script</strong> that checks every DOI against Crossref, the free publication
+database. The prompt is below.</li>
+<li><strong>Run it before you submit.</strong> It writes a table of every field where your entry and the
+record disagree.</li>
+</ol>
+<h2 id="measured">Measured</h2>
+<p>My demo paper's <code>references.bib</code> cites a survey with year <strong>2023</strong>. Its Crossref record says
+<strong>2024</strong>. I planted that one: the survey was an arXiv preprint in 2023 and a journal article in
+2024. The script found it in 1.3 s, and listed the one DOI that Crossref does not know (an
+arXiv DOI, see Gotchas).</p>
+<figure><img src="../../files/posts/img/R06-year-check.jpg" alt="The check on screen: my demo paper says 2023, crossed out; Crossref says 2024" loading="lazy" /><figcaption>The check on screen: my demo paper says 2023, crossed out; Crossref says 2024</figcaption></figure>
+<h2 id="cost-prices-as-of-oct-2026">Cost (prices as of Oct 2026)</h2>
+<ul>
+<li>Crossref API: free, no sign-up, no key. It allows 5 requests a second, one at a time, or 10 a
+second and 3 at a time when your requests carry an email address (Crossref's documentation
+and response headers, checked 2026-10-20). A reference list of a few hundred entries runs
+well inside that.</li>
+<li>The script runs on your computer, standard Python only: $0.</li>
+<li>Any AI that writes code can write it from the prompt. I used Claude Code (Claude Max,
+$200/month, which I already pay for everything I build).</li>
+</ul>
+<h2 id="try-it">Try it</h2>
+<p>Paste this into your AI (Claude, ChatGPT, Codex, Claude Code), in the folder that holds your
+<code>references.bib</code>. Needs Python 3 and internet; no API key.</p>
+<p>Tested 2026-10-29 with Claude Code on the demo <code>references.bib</code>. The first version stopped
+with a 404 on an arXiv DOI, so the prompt now says what to do with those. Second run: 1
+mismatch (year 2023 vs 2024), 1 DOI not in Crossref, 1.3 s.</p>
+<pre><code class="language-text">Write a Python script, check_bib.py, that reads my file references.bib. Use only the Python standard library.
+
+For every entry with a doi field, fetch its record from https://api.crossref.org/works/ followed by the DOI (send a User-Agent header that includes mailto: and my email), and compare title, year, journal, volume and pages with my entry. Ignore differences in capitalization and punctuation. For the year, use the record's print date, then its online date.
+
+Write a table to mismatches.md with: citation key, field, my value, Crossref value. Below the table, list the entries without a DOI, and the DOIs Crossref doesn't know (it answers 404; arXiv DOIs are registered at DataCite, not Crossref) instead of stopping.
+
+Do not change references.bib. Print one line: how many mismatches, how many without DOI, how many not in Crossref.
+</code></pre>
+<p>Done when: <code>python3 check_bib.py</code> prints that line, <code>mismatches.md</code> has one row per field that
+disagrees, and <code>references.bib</code> is unchanged.</p>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li><strong>Not every DOI is a Crossref DOI.</strong> arXiv DOIs (<code>10.48550/...</code>) are DataCite's, so Crossref's
+API returns a 404 for them. (Seen in the test.) If you need those too, ask the script to try
+<code>https://doi.org/&lt;doi&gt;</code> with <code>Accept: application/vnd.citationstyles.csl+json</code>.</li>
+<li><strong>The paper's year and the record's year can both be right.</strong> A preprint year and a journal
+year differ. Decide which version you cite, then make the entry say so.</li>
+<li><strong>Titles differ in small ways all the time.</strong> Sentence case, a dash, a subtitle. That is why the
+prompt ignores capitalization and punctuation; read the title rows before changing anything.</li>
+<li><strong>How my own bibliography is built:</strong> it is generated from my notes (each paper's page name is
+its citation key), so I fix the note and rebuild instead of editing the <code>.bib</code>. That build is
+a story for another note.</li>
+</ul>
+<hr />
+<p><strong>En español:</strong> un año mal puesto en las referencias es fácil de pasar por alto. Tres pasos:
+exporta tu bibliografía como <code>.bib</code> con el DOI de cada paper, pídele a tu IA un script que
+compare cada DOI con Crossref (la base de datos gratis de publicaciones), y córrelo antes de
+enviar. En mi paper de demo, el año decía 2023 y Crossref dice 2024: lo planté yo. El prompt de
+arriba (en inglés) está probado el 2026-10-29. Costo: $0 (Crossref gratis, sin cuenta; precios
+a oct 2026).</p>
+<div class="post-next"><a href="../index.html">← All notes</a><a href="../../resources/index.html">Resources ↗</a></div></article></div></main><footer class="site-footer"><div class="wrap"><div class="footer-inner"><a class="wordmark" href="../../index.html">linnet builds.</a><span class="footer-note">Built, tried, written down.</span><div class="footer-links"><a href="https://www.instagram.com/linnetbuilds/">Instagram</a><a href="https://www.youtube.com/@linnetbuilds">YouTube</a><a href="https://github.com/linnetbuilds/notes">GitHub</a></div></div><p class="footer-bottom">@linnetbuilds · Open notes. No email required. · <a href="../../assets/licenses/index.txt">Font licenses</a></p></div></footer></body></html>

@@ -1,5 +1,6 @@
 {
   "public_codes": [
+    "R06",
     "C02",
     "R04",
     "R03",
@@ -8,8 +9,10 @@
     "R01"
   ],
   "source_sha256": {
-    "posts/C02-pdf-to-wiki.md": "324140e8bae6eef7c79add088f69bb9e9d1c626f3a8a57cb71867cbe2532fe7f",
-    "posts/C02-pdf-to-wiki.md#es": "b2f324ab015b5277010e3d4d5e6e2a240c20a57f0f1cf15bf35b1b9190b92247",
+    "posts/R06-bibliography.md": "a801070f4ec003f0aeca7378e4d8bc34de7a21426bd53515ebb5c8d24c4a450f",
+    "posts/R06-bibliography.md#es": "64847e2dbfd53d7ad44c2d01033a4752895508ff1fb0d26f783379b7fa30c58c",
+    "posts/C02-pdf-to-wiki.md": "05d004d5b65009703ce3c29a062e3d85e025b133b0262e0ef07ed9450227bf71",
+    "posts/C02-pdf-to-wiki.md#es": "d0f6b70af7eedaccd334607a9280f6e5d6230e2e9c3425739125302d9ed719b5",
     "posts/R04-baby-food-app.md": "e993724df0b529a540073865122a760a4029e22dc1e9a22a32e572986752cec2",
     "posts/R04-baby-food-app.md#es": "1d9a02d7433c62f821ebab8619ff2c1b90b38f45e0d56d0d51db6d8207af5679",
     "posts/R03-no-summaries.md": "7270d55aa41ab151b87dbb144f26c6c3535ffbdf73f0aef22cc78ae64130461e",
@@ -38,6 +41,7 @@
     "es/notas/r02-power-cuts/index.html",
     "es/notas/r03-no-summaries/index.html",
     "es/notas/r04-baby-food-app/index.html",
+    "es/notas/r06-bibliography/index.html",
     "es/recursos/index.html",
     "index.html",
     "library/agent-rules/index.html",
@@ -50,6 +54,7 @@
     "notes/r02-power-cuts/index.html",
     "notes/r03-no-summaries/index.html",
     "notes/r04-baby-food-app/index.html",
+    "notes/r06-bibliography/index.html",
     "resources/index.html"
   ],
   "future_drafts_included": false

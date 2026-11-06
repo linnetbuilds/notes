@@ -17,7 +17,7 @@ run, 2026-10-18: **4 min 9 s** from the phone to the page.
 5. **The wiki catches up:** the agent updates the concept pages it touches and flags
    contradictions. A hard contradiction stops the ingest and waits for me.
 6. **It reports back:** index, log and a short summary to the phone. A nightly script, with no
-   AI in it, rebuilds the bibliography (see R06) and the dashboard.
+   AI in it, rebuilds the bibliography (see [R06](R06-bibliography.md)) and the dashboard.
 
 The paid AI only does steps 4 and 5. Everything else is scripts.
 
