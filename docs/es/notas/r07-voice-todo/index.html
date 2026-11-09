@@ -1,0 +1,63 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Linnet Builds | Una nota de voz se vuelve tarea</title><meta name="description" content="Hecho, probado y contado."><link rel="canonical" href="https://linnetbuilds.github.io/notes/es/notas/r07-voice-todo/"><link rel="alternate" hreflang="en" href="https://linnetbuilds.github.io/notes/notes/r07-voice-todo/index.html"><meta property="og:title" content="Linnet Builds | Una nota de voz se vuelve tarea"><meta property="og:type" content="article"><meta property="og:url" content="https://linnetbuilds.github.io/notes/es/notas/r07-voice-todo/"><meta property="og:image" content="https://linnetbuilds.github.io/notes/assets/social-card.png"><meta property="og:description" content="Hecho, probado y contado."><link rel="icon" href="../../../assets/mark.png"><link rel="stylesheet" href="../../../assets/site.css"><script defer src="../../../assets/site.js"></script></head><body>
+<a class="skip" href="#main">Ir al contenido</a><header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="../../index.html"><img src="../../../assets/mark.png" alt="" width="36" height="36">linnet builds.</a><nav class="main-nav" aria-label="Navegación principal"><a href="../index.html">Notas</a><a href="../../recursos/index.html">Recursos</a><a href="../../acerca/index.html">Sobre Linnet</a><a class="github-link" href="https://github.com/linnetbuilds/notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.2.8 3.28.12.1-.73.4-1.23.72-1.52-2.49-.28-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 5.35c.95 0 1.9.13 2.79.38 2.13-1.44 3.07-1.15 3.07-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.26-5.12 5.54.4.35.76 1.03.76 2.08v3.92c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>GitHub</a></nav><a class="lang-link" href="../../../notes/r07-voice-todo/index.html" lang="en" hreflang="en" aria-label="Read in English">EN / <strong>ES</strong></a></div></header>
+<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notas</a> / R07</p><h1>Una nota de voz se vuelve tarea</h1><div class="article-meta"><span>2026-11-09</span><span>R07 · ES</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R07-voice-todo.es.md">Ver en GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">En esta nota</p><ol><li><a href="#los-tres-pasos">Los tres pasos</a></li><li><a href="#medido">Medido</a></li><li><a href="#costo-precios-a-oct-2026">Costo (precios a oct 2026)</a></li><li><a href="#pruebalo">Pruébalo</a></li><li><a href="#ojo-con-esto">Ojo con esto</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R07-voice-todo.es.md">Ver en GitHub ↗</a></aside><article class="prose" lang="es"><p>¿Manos ocupadas y te acabas de acordar de algo? Díselo una vez a un bot de Telegram, y cae en
+tu lista de pendientes con su fecha. Esta nota tiene los tres pasos del video, más el prompt.</p>
+<h2 id="los-tres-pasos">Los tres pasos</h2>
+<ol>
+<li><strong>Crea un bot de Telegram con BotFather.</strong> En Telegram, escríbele a <code>@BotFather</code>, manda
+<code>/newbot</code> y elige un nombre. Te da un token: guárdalo en secreto, es la contraseña del bot.</li>
+<li><strong>Instala Whisper en tu computadora:</strong> <code>pip install faster-whisper</code>. Convierte la voz en
+texto en tu propia máquina, así tus notas de voz nunca van a un servicio de transcripción.</li>
+<li><strong>Pídele a tu IA el script</strong> con el prompt de abajo. Las notas de voz que empiezan con
+&quot;tarea&quot; (o &quot;task&quot;) se vuelven una línea como <code>- [ ] Buy diapers due:2026-10-30</code> bajo
+<code>## Inbox</code> en tu <code>todo.md</code>.</li>
+</ol>
+<h2 id="medido">Medido</h2>
+<p>Mi propio bot, en vivo desde el celular, el 2026-10-18: unos <strong>5 s</strong> desde &quot;transcribing&quot; hasta
+la tarea guardada (9 s para la primera nota, mientras carga el modelo). La nota &quot;Tarea, comprar
+pañales mañana&quot; se volvió <code>- [ ] Comprar pañales due:2026-10-19</code>, el día siguiente.</p>
+<figure><img src="../../../files/posts/img/R07-bot-reply.jpg" alt="La respuesta del bot en Telegram: transcribiendo, luego la tarea guardada en life/todo.md bajo Inbox con su fecha, y lo que escuchó" loading="lazy" /><figcaption>La respuesta del bot en Telegram: transcribiendo, luego la tarea guardada en life/todo.md bajo Inbox con su fecha, y lo que escuchó</figcaption></figure>
+<h2 id="costo-precios-a-oct-2026">Costo (precios a oct 2026)</h2>
+<p><strong>$0.</strong> Los bots de Telegram son gratis (más o menos 1 mensaje por segundo por chat, archivos
+del bot de hasta 50 MB; preguntas frecuentes de bots de Telegram, revisadas el 2026-10-21).
+Whisper corre en tu computadora. Obsidian, si lees <code>todo.md</code> ahí: gratis para uso personal.
+Cualquier IA que escriba código puede escribir el script; yo uso Claude Code (Claude Max,
+$200/mes, que ya pago para todo lo que construyo).</p>
+<h2 id="pruebalo">Pruébalo</h2>
+<p>Pega esto en tu IA (Claude, ChatGPT, Codex, Claude Code) en una carpeta vacía. Necesitas
+Python 3, ffmpeg, y el token y el chat id de tu bot.</p>
+<p>Probado el 2026-10-29 con Claude Code: corrí la parte de voz a línea con dos notas grabadas,
+sin Telegram. &quot;Task, buy diapers tomorrow&quot; y &quot;Tarea, comprar pañales el viernes&quot; cayeron las
+dos bajo Inbox con la fecha correcta (viernes, 2026-10-30), en unos 9 s en el CPU. La parte de
+Telegram necesita tu propio token, así que esa te toca probarla a ti.</p>
+<p>El prompt va en inglés, que es como lo probé.</p>
+<pre><code class="language-text">Write a Python Telegram bot, voice_todo.py, using python-telegram-bot and faster-whisper. It only answers my chat id.
+
+When I send a voice note: download it, transcribe it with faster-whisper on this computer (decode the audio with ffmpeg), then delete the audio file.
+
+If the text starts with task, to do, tarea or pendiente, turn the rest into one line &quot;- [ ] the task due:YYYY-MM-DD&quot; and add it under &quot;## Inbox&quot; in todo.md (create the file if it is missing). Understand today, tomorrow and weekday names in English and Spanish; if there is no date, leave out due:. Reply with what you heard and the line you added.
+
+Read the bot token and my chat id from the environment variables TELEGRAM_TOKEN and MY_CHAT_ID, never from the code. Put the voice-to-line part in its own function, and add a --file option so I can test it on an audio file without Telegram.
+</code></pre>
+<p>Listo cuando: <code>python3 voice_todo.py --file note.ogg</code> imprime lo que escuchó y agrega la línea a
+<code>todo.md</code>; después, con las dos variables configuradas, una nota de voz a tu bot recibe la misma
+respuesta.</p>
+<h2 id="ojo-con-esto">Ojo con esto</h2>
+<ul>
+<li><strong>Las palabras cortas en inglés se pierden.</strong> El modelo small de Whisper escuchó &quot;Task, buy
+diapers tomorrow&quot; como &quot;Task by diapers tomorrow&quot; (visto en la prueba), y mi propio bot una vez
+escuchó &quot;Task: buy coffee tomorrow&quot; como &quot;Task by coffee tomorrow&quot;. Un modelo más grande
+(<code>large-v3-turbo</code>, el que usa mi bot) lo hace mejor, pero más lento. El español salió exacto
+las dos veces.</li>
+<li><strong>La primera nota después de reiniciar es más lenta</strong> mientras carga el modelo.</li>
+<li><strong>Nunca pegues el token del bot en el código ni en un chat.</strong> Quien lo tenga controla el bot.
+Las variables de entorno lo mantienen fuera del archivo.</li>
+<li><strong>Revisa el chat id.</strong> Sin esa revisión, cualquiera que encuentre tu bot puede escribir en tu
+lista.</li>
+</ul>
+<hr />
+<p><strong>In English:</strong> I send a voice note to a Telegram bot; if it starts with &quot;task&quot;, it becomes a
+dated line in my <code>todo.md</code> under Inbox. Three steps: a free bot from BotFather, Whisper running
+on your computer, and the script from the prompt above (tested 2026-10-29). Cost: $0 (prices as
+of Oct 2026).</p>
+<div class="post-next"><a href="../index.html">← Todas las notas</a><a href="../../recursos/index.html">Recursos ↗</a></div></article></div></main><footer class="site-footer"><div class="wrap"><div class="footer-inner"><a class="wordmark" href="../../index.html">linnet builds.</a><span class="footer-note">Hecho, probado y contado.</span><div class="footer-links"><a href="https://www.instagram.com/linnetbuilds/">Instagram</a><a href="https://www.youtube.com/@linnetbuilds">YouTube</a><a href="https://github.com/linnetbuilds/notes">GitHub</a></div></div><p class="footer-bottom">@linnetbuilds · Notas abiertas. Sin dejar tu correo. · <a href="../../../assets/licenses/index.txt">Licencias de fuentes</a></p></div></footer></body></html>

@@ -1,5 +1,6 @@
 {
   "public_codes": [
+    "R07",
     "R06",
     "C02",
     "R04",
@@ -9,6 +10,8 @@
     "R01"
   ],
   "source_sha256": {
+    "posts/R07-voice-todo.md": "6fa4dc8762cc02d5f00d5f9db0cbf08e1a4603d2f1c8154e317cd03bc59779ac",
+    "posts/R07-voice-todo.md#es": "ede1c22dc0be244f54e542558679b64c2a24ef199dab48a676161f1c13e6a657",
     "posts/R06-bibliography.md": "a801070f4ec003f0aeca7378e4d8bc34de7a21426bd53515ebb5c8d24c4a450f",
     "posts/R06-bibliography.md#es": "64847e2dbfd53d7ad44c2d01033a4752895508ff1fb0d26f783379b7fa30c58c",
     "posts/C02-pdf-to-wiki.md": "05d004d5b65009703ce3c29a062e3d85e025b133b0262e0ef07ed9450227bf71",
@@ -42,6 +45,7 @@
     "es/notas/r03-no-summaries/index.html",
     "es/notas/r04-baby-food-app/index.html",
     "es/notas/r06-bibliography/index.html",
+    "es/notas/r07-voice-todo/index.html",
     "es/recursos/index.html",
     "index.html",
     "library/agent-rules/index.html",
@@ -55,6 +59,7 @@
     "notes/r03-no-summaries/index.html",
     "notes/r04-baby-food-app/index.html",
     "notes/r06-bibliography/index.html",
+    "notes/r07-voice-todo/index.html",
     "resources/index.html"
   ],
   "future_drafts_included": false
