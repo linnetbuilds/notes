@@ -30,6 +30,7 @@ Everything here stays free, no email needed. / Todo lo de aquí sigue gratis, si
 | [C02](posts/C02-pdf-to-wiki.md) | 2026-11-05 | PDF to wiki page in 4 minutes |
 | [R06](posts/R06-bibliography.md) | 2026-11-06 | Catch the wrong year in your references before you submit |
 | [R07](posts/R07-voice-todo.md) | 2026-11-09 | My to-do list fills itself from voice notes |
+| [C03](posts/C03-night-queue.md) | 2026-11-12 | 1,000 runs, one at a time |
 
 New notes are added as the posts go out.
 

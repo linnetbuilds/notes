@@ -1,5 +1,6 @@
 {
   "public_codes": [
+    "C03",
     "R07",
     "R06",
     "C02",
@@ -10,6 +11,8 @@
     "R01"
   ],
   "source_sha256": {
+    "posts/C03-night-queue.md": "3adf0b5a2ab72c8bd408e3b5c8c7b59e03770543e473a6e3a25b3615e17683ff",
+    "posts/C03-night-queue.md#es": "2b3c65cb2cf65937151b2cd0f5002472bb7900f0fbd5fa5b7d52a21295db1fac",
     "posts/R07-voice-todo.md": "6fa4dc8762cc02d5f00d5f9db0cbf08e1a4603d2f1c8154e317cd03bc59779ac",
     "posts/R07-voice-todo.md#es": "ede1c22dc0be244f54e542558679b64c2a24ef199dab48a676161f1c13e6a657",
     "posts/R06-bibliography.md": "a801070f4ec003f0aeca7378e4d8bc34de7a21426bd53515ebb5c8d24c4a450f",
@@ -39,6 +42,7 @@
     "es/index.html",
     "es/notas/c01-agent-rules/index.html",
     "es/notas/c02-pdf-to-wiki/index.html",
+    "es/notas/c03-night-queue/index.html",
     "es/notas/index.html",
     "es/notas/r01-paper-to-wiki/index.html",
     "es/notas/r02-power-cuts/index.html",
@@ -53,6 +57,7 @@
     "library/agent-rules/rules/index.html",
     "notes/c01-agent-rules/index.html",
     "notes/c02-pdf-to-wiki/index.html",
+    "notes/c03-night-queue/index.html",
     "notes/index.html",
     "notes/r01-paper-to-wiki/index.html",
     "notes/r02-power-cuts/index.html",
