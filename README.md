@@ -31,6 +31,7 @@ Everything here stays free, no email needed. / Todo lo de aquí sigue gratis, si
 | [R06](posts/R06-bibliography.md) | 2026-11-06 | Catch the wrong year in your references before you submit |
 | [R07](posts/R07-voice-todo.md) | 2026-11-09 | My to-do list fills itself from voice notes |
 | [C03](posts/C03-night-queue.md) | 2026-11-12 | 1,000 runs, one at a time |
+| [R05](posts/R05-two-tools.md) | 2026-11-13 | Two AI coding tools, rules written once |
 
 New notes are added as the posts go out.
 
@@ -41,4 +42,5 @@ Files you can copy, from the posts that offer them ("Comment KEYWORD").
 | Post | Resource |
 |---|---|
 | C01 | [6 rules, each from a mistake](resources/agent-rules/) |
+| R05 | [Two AI coding tools, one setup](resources/two-tools-setup/) |
 

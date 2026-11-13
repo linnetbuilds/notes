@@ -1,0 +1,7 @@
+{
+  "rules": "rules/RULES.md",
+  "targets": [
+    {"tool": "Claude Code", "file": "CLAUDE.md", "header": "rules/claude-code.header.md", "skills_link": ".claude/skills"},
+    {"tool": "Codex", "file": "AGENTS.md", "header": "rules/codex.header.md", "skills_link": ".agents/skills"}
+  ]
+}
