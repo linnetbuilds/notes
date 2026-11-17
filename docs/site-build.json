@@ -1,5 +1,6 @@
 {
   "public_codes": [
+    "R38",
     "R05",
     "C03",
     "R07",
@@ -12,6 +13,7 @@
     "R01"
   ],
   "source_sha256": {
+    "posts/R38-interview-plan.md": "1e929d591a4e148f6bdb5d27d0741b947a4d43088f571e13564b44ec768773fe",
     "posts/R05-two-tools.md": "3a2f739306cbf7233352a18b272caca0f6ec073a1c88fa0df5b6a4f9f15400f4",
     "posts/R05-two-tools.md#es": "c82896a5a645c580434b9a74792cbe33648f9f1e3ad224cf0d06738d44351d76",
     "resources/two-tools-setup/README.md": "a89efd61dbe07b2684fd7f5fd512e3cd43b684adc1c5797c348815a92b97b6dd",
@@ -64,6 +66,7 @@
     "es/notas/r05-two-tools/index.html",
     "es/notas/r06-bibliography/index.html",
     "es/notas/r07-voice-todo/index.html",
+    "es/notas/r38-interview-plan/index.html",
     "es/recursos/index.html",
     "index.html",
     "library/agent-rules/index.html",
@@ -85,6 +88,7 @@
     "notes/r05-two-tools/index.html",
     "notes/r06-bibliography/index.html",
     "notes/r07-voice-todo/index.html",
+    "notes/r38-interview-plan/index.html",
     "resources/index.html"
   ],
   "future_drafts_included": false

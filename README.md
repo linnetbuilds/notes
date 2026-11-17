@@ -32,6 +32,7 @@ Everything here stays free, no email needed. / Todo lo de aquí sigue gratis, si
 | [R07](posts/R07-voice-todo.md) | 2026-11-09 | My to-do list fills itself from voice notes |
 | [C03](posts/C03-night-queue.md) | 2026-11-12 | 1,000 runs, one at a time |
 | [R05](posts/R05-two-tools.md) | 2026-11-13 | Two AI coding tools, rules written once |
+| [R38](posts/R38-interview-plan.md) | 2026-11-17 | Let the AI interview you before it plans your week |
 
 New notes are added as the posts go out.
 
