@@ -68,6 +68,7 @@
     "es/notas/r07-voice-todo/index.html",
     "es/notas/r38-interview-plan/index.html",
     "es/recursos/index.html",
+    "es/videos/index.html",
     "index.html",
     "library/agent-rules/index.html",
     "library/agent-rules/rules-es/index.html",
@@ -89,7 +90,8 @@
     "notes/r06-bibliography/index.html",
     "notes/r07-voice-todo/index.html",
     "notes/r38-interview-plan/index.html",
-    "resources/index.html"
+    "resources/index.html",
+    "videos/index.html"
   ],
   "future_drafts_included": false
 }

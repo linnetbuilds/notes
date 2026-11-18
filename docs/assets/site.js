@@ -21,7 +21,7 @@
   const input = document.querySelector('[data-search]');
   const filters = [...document.querySelectorAll('[data-topic]')];
   const cards = [...document.querySelectorAll('[data-note]')];
-  let topic = 'all';
+  let topic = filters.find(button => button.getAttribute('aria-pressed') === 'true')?.dataset.topic || 'all';
   const normalize = value => value.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const update = () => {
     const query = normalize(input?.value || '');
@@ -32,7 +32,9 @@
       if (match) count++;
     }
     const total = document.querySelector('[data-count]');
-    if (total) total.textContent = lang === 'es' ? `${count} ${count === 1 ? 'nota' : 'notas'}` : `${count} ${count === 1 ? 'note' : 'notes'}`;
+    if (total) total.textContent = total.dataset.unit === 'posts'
+      ? (lang === 'es' ? `${count} ${count === 1 ? 'publicación' : 'publicaciones'}` : `${count} ${count === 1 ? 'post' : 'posts'}`)
+      : (lang === 'es' ? `${count} ${count === 1 ? 'nota' : 'notas'}` : `${count} ${count === 1 ? 'note' : 'notes'}`);
     const empty = document.querySelector('[data-empty]');
     if (empty) empty.hidden = count > 0;
   };
