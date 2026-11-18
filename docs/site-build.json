@@ -1,5 +1,6 @@
 {
   "public_codes": [
+    "R11",
     "R38",
     "R05",
     "C03",
@@ -13,6 +14,8 @@
     "R01"
   ],
   "source_sha256": {
+    "posts/R11-morning-digest.md": "bf30d467bd3e2a902ba59b65362f3f0c194a505eaf750ef9ef79e0ad32bfd3d4",
+    "posts/R11-morning-digest.md#es": "f9cf488dad5325074785a2da3d55a5f4eff04305f808c4cfd5002cf8a29b0c6c",
     "posts/R38-interview-plan.md": "1e929d591a4e148f6bdb5d27d0741b947a4d43088f571e13564b44ec768773fe",
     "posts/R05-two-tools.md": "3a2f739306cbf7233352a18b272caca0f6ec073a1c88fa0df5b6a4f9f15400f4",
     "posts/R05-two-tools.md#es": "c82896a5a645c580434b9a74792cbe33648f9f1e3ad224cf0d06738d44351d76",
@@ -66,6 +69,7 @@
     "es/notas/r05-two-tools/index.html",
     "es/notas/r06-bibliography/index.html",
     "es/notas/r07-voice-todo/index.html",
+    "es/notas/r11-morning-digest/index.html",
     "es/notas/r38-interview-plan/index.html",
     "es/recursos/index.html",
     "es/videos/index.html",
@@ -89,6 +93,7 @@
     "notes/r05-two-tools/index.html",
     "notes/r06-bibliography/index.html",
     "notes/r07-voice-todo/index.html",
+    "notes/r11-morning-digest/index.html",
     "notes/r38-interview-plan/index.html",
     "resources/index.html",
     "videos/index.html"

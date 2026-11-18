@@ -1,0 +1,53 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Linnet Builds | Mi celular solo habla si importa</title><meta name="description" content="Hecho, probado y contado."><link rel="canonical" href="https://linnetbuilds.github.io/notes/es/notas/r11-morning-digest/"><link rel="alternate" hreflang="en" href="https://linnetbuilds.github.io/notes/notes/r11-morning-digest/index.html"><meta property="og:title" content="Linnet Builds | Mi celular solo habla si importa"><meta property="og:type" content="article"><meta property="og:url" content="https://linnetbuilds.github.io/notes/es/notas/r11-morning-digest/"><meta property="og:image" content="https://linnetbuilds.github.io/notes/assets/social-card.png"><meta property="og:description" content="Hecho, probado y contado."><link rel="icon" href="../../../assets/mark.png"><link rel="stylesheet" href="../../../assets/site.css"><script defer src="../../../assets/site.js"></script></head><body>
+<a class="skip" href="#main">Ir al contenido</a><header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="../../index.html"><img src="../../../assets/mark.png" alt="" width="36" height="36">linnet builds.</a><nav class="main-nav" aria-label="Navegación principal"><a href="../../videos/index.html">Videos</a><a href="../index.html">Notas</a><a href="../../recursos/index.html">Recursos</a><a href="../../acerca/index.html">Sobre Linnet</a><a class="github-link" href="https://github.com/linnetbuilds/notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.2.8 3.28.12.1-.73.4-1.23.72-1.52-2.49-.28-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 5.35c.95 0 1.9.13 2.79.38 2.13-1.44 3.07-1.15 3.07-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.26-5.12 5.54.4.35.76 1.03.76 2.08v3.92c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>GitHub</a></nav><a class="lang-link" href="../../../notes/r11-morning-digest/index.html" lang="en" hreflang="en" aria-label="Read in English">EN / <strong>ES</strong></a></div></header>
+<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notas</a> / R11</p><h1>Mi celular solo habla si importa</h1><div class="article-meta"><span>2026-11-18</span><span>R11 · ES</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R11-morning-digest.es.md">Ver en GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">En esta nota</p><ol><li><a href="#los-tres-pasos">Los tres pasos</a></li><li><a href="#medido">Medido</a></li><li><a href="#costo-precios-a-oct-2026">Costo (precios a oct 2026)</a></li><li><a href="#pruebalo">Pruébalo</a></li><li><a href="#ojo-con-esto">Ojo con esto</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R11-morning-digest.es.md">Ver en GitHub ↗</a></aside><article class="prose" lang="es"><p>Tu teléfono te avisa de todo, menos de lo que vence hoy. Este script manda un solo mensaje
+de Telegram en la mañana con lo atrasado y lo que vence hoy, y nada de nada cuando no hay
+nada. Ni siquiera un buenos días.</p>
+<h2 id="los-tres-pasos">Los tres pasos</h2>
+<ol>
+<li><strong>Tus tareas en un archivo de texto</strong>, una por línea, cada una con su fecha:
+<code>- [ ] Renew the parking permit due:2026-11-17</code>.</li>
+<li><strong>Un bot gratis de Telegram y un script.</strong> El bot lo creas con <code>@BotFather</code>; el script te
+lo escribe tu IA con el prompt de abajo.</li>
+<li><strong>Prográmalo cada mañana.</strong> Linux o Mac: <code>crontab -e</code> y una línea como
+<code>0 7 * * * cd /path/to/folder &amp;&amp; python3 digest.py --send</code>. Windows: el Programador de
+tareas (Task Scheduler).</li>
+</ol>
+<h2 id="medido">Medido</h2>
+<p>Con la lista de demo, para el miércoles 18 de noviembre: 1 atrasada, 2 para hoy, un solo
+mensaje. Para el lunes 16 de noviembre, cuando no vencía nada: nada en pantalla, ningún
+mensaje.</p>
+<figure><img src="../../../files/posts/img/R11-digest.jpg" alt="El resumen del miércoles 18 de noviembre: 1 atrasada, 2 para hoy, 2 más en los próximos 7 días" loading="lazy" /><figcaption>El resumen del miércoles 18 de noviembre: 1 atrasada, 2 para hoy, 2 más en los próximos 7 días</figcaption></figure>
+<h2 id="costo-precios-a-oct-2026">Costo (precios a oct 2026)</h2>
+<p><strong>$0.</strong> El script no usa IA cuando corre. Los bots de Telegram son gratis (más o menos 1
+mensaje por segundo por chat, archivos del bot de hasta 50 MB; según el FAQ de bots de
+Telegram, revisado el 2026-10-21). Cualquier IA que escriba código puede hacerlo con el
+prompt; yo uso Claude Code (Claude Max, $200/mes, que ya pago para todo lo que construyo).</p>
+<h2 id="pruebalo">Pruébalo</h2>
+<p>Pega esto en tu IA (Claude, ChatGPT, Codex, Claude Code), en la carpeta donde está tu
+<code>todo.md</code>. Necesitas Python 3, el token de tu bot y tu chat id.</p>
+<p>Probado el 2026-10-29 con Claude Code en un <code>todo.md</code> de cinco líneas: para 2026-11-18 mostró
+1 atrasada y 2 para hoy; para 2026-11-16 no mostró nada y terminó sin errores. El envío en sí
+necesita tu propio bot, así que esa parte pruébala tú con <code>--send</code>.</p>
+<p>El prompt va en inglés, que es como lo probé.</p>
+<pre><code class="language-text">Write a Python script, digest.py, standard library only. It reads todo.md, where each open task is a line like &quot;- [ ] the task due:YYYY-MM-DD&quot;. Ignore done tasks (&quot;- [x]&quot;).
+
+If any open task is overdue or due today, build one message: &quot;Good morning. &lt;weekday day month&gt;&quot;, then &quot;Overdue (n)&quot; with each task and the date it was due, then &quot;Today (n)&quot; with each task. If there are none, print and send nothing at all.
+
+By default only print the message. With --send, send it through the Telegram Bot API (sendMessage). Read the bot token and my chat id from config.json, never from the code, and never print them. Add --date YYYY-MM-DD so I can test any day.
+</code></pre>
+<h2 id="ojo-con-esto">Ojo con esto</h2>
+<ul>
+<li><strong>&quot;Nada&quot; tiene que ser nada.</strong> Pídelo explícitamente: muchas primeras versiones mandan
+&quot;Good morning, no tasks today&quot;, que es justo el mensaje que no querías.</li>
+<li><strong>cron corre en otra carpeta.</strong> Pon <code>cd /path/to/folder &amp;&amp;</code> antes del comando, o usa rutas
+absolutas, o el script no va a encontrar <code>todo.md</code>.</li>
+<li><strong>El token, fuera del script.</strong> <code>config.json</code> no va en ningún repositorio ni en ninguna
+grabación de pantalla.</li>
+<li><strong>Si tu computadora está apagada a las 7, no hay mensaje.</strong> cron no se pone al día; el
+Programador de tareas sí puede (&quot;run as soon as possible after a missed start&quot;).</li>
+</ul>
+<hr />
+<p><strong>In English:</strong> a Telegram digest that only writes when something is overdue or due today,
+and sends nothing when there's nothing. Tested 2026-10-29. Cost: $0 (prices as of Oct 2026).</p>
+<div class="post-next"><a href="../index.html">← Todas las notas</a><a href="../../recursos/index.html">Recursos ↗</a></div></article></div></main><footer class="site-footer"><div class="wrap"><div class="footer-inner"><a class="wordmark" href="../../index.html">linnet builds.</a><span class="footer-note">Hecho, probado y contado.</span><div class="footer-links"><a href="https://www.instagram.com/linnetbuilds/">Instagram</a><a href="https://www.tiktok.com/@linnetbuilds">TikTok</a><a href="https://www.youtube.com/@linnetbuilds">YouTube</a><a href="https://github.com/linnetbuilds/notes">GitHub</a></div></div><p class="footer-bottom">@linnetbuilds · Notas abiertas. Sin dejar tu correo. · <a href="../../../assets/licenses/index.txt">Licencias de fuentes</a></p></div></footer></body></html>
