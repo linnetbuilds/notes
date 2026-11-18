@@ -1,6 +1,23 @@
 (() => {
   const root = document.documentElement;
   const lang = root.lang;
+  // No tracker is loaded by default. Send only fixed event labels and page paths.
+  // Campaign attribution belongs to the clicked entry URL, not new internal UTMs.
+  const track = (name, properties = {}) => {
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+    if (window.umami?.track) window.umami.track(name, properties);
+  };
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const target = new URL(link.href, location.href);
+    let name;
+    if (link.hasAttribute('download')) name = 'resource_download';
+    else if (target.hostname === 'linnet-builds.kit.com') name = 'newsletter_open';
+    else if (target.hostname === 'github.com') name = 'github_open';
+    else if (target.origin === location.origin && /\/(?:notes|notas)\/[^/]+\/index.html$/.test(target.pathname)) name = 'note_open';
+    if (name) track(name, { page: location.pathname, destination: target.pathname });
+  });
   const input = document.querySelector('[data-search]');
   const filters = [...document.querySelectorAll('[data-topic]')];
   const cards = [...document.querySelectorAll('[data-note]')];
@@ -45,6 +62,7 @@
           new Promise((resolve, reject) => setTimeout(() => reject(new Error('Clipboard unavailable')), 1500))
         ]);
         button.textContent = lang === 'es' ? 'Copiado' : 'Copied';
+        track('code_copy', { page: location.pathname });
       } catch {
         const selection = window.getSelection();
         const range = document.createRange();
