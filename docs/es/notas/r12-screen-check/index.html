@@ -1,0 +1,52 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Linnet Builds | Revisado antes de grabar</title><meta name="description" content="Hecho, probado y contado."><link rel="canonical" href="https://linnetbuilds.github.io/notes/es/notas/r12-screen-check/"><link rel="alternate" hreflang="en" href="https://linnetbuilds.github.io/notes/notes/r12-screen-check/index.html"><meta property="og:title" content="Linnet Builds | Revisado antes de grabar"><meta property="og:type" content="article"><meta property="og:url" content="https://linnetbuilds.github.io/notes/es/notas/r12-screen-check/"><meta property="og:image" content="https://linnetbuilds.github.io/notes/assets/social-card.png"><meta property="og:description" content="Hecho, probado y contado."><link rel="icon" href="../../../assets/mark.png"><link rel="stylesheet" href="../../../assets/site.css"><script defer src="../../../assets/site.js"></script></head><body>
+<a class="skip" href="#main">Ir al contenido</a><header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="../../index.html"><img src="../../../assets/mark.png" alt="" width="36" height="36">linnet builds.</a><nav class="main-nav" aria-label="Navegación principal"><a href="../../videos/index.html">Videos</a><a href="../index.html">Notas</a><a href="../../recursos/index.html">Recursos</a><a href="../../acerca/index.html">Sobre Linnet</a><a class="github-link" href="https://github.com/linnetbuilds/notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.2.8 3.28.12.1-.73.4-1.23.72-1.52-2.49-.28-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 5.35c.95 0 1.9.13 2.79.38 2.13-1.44 3.07-1.15 3.07-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.26-5.12 5.54.4.35.76 1.03.76 2.08v3.92c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>GitHub</a></nav><a class="lang-link" href="../../../notes/r12-screen-check/index.html" lang="en" hreflang="en" aria-label="Read in English">EN / <strong>ES</strong></a></div></header>
+<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notas</a> / R12</p><h1>Revisado antes de grabar</h1><div class="article-meta"><span>2026-11-20</span><span>R12 · ES</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R12-screen-check.es.md">Ver en GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">En esta nota</p><ol><li><a href="#los-tres-pasos">Los tres pasos</a></li><li><a href="#medido">Medido</a></li><li><a href="#costo-precios-a-oct-2026">Costo (precios a oct 2026)</a></li><li><a href="#pruebalo">Pruébalo</a></li><li><a href="#ojo-con-esto">Ojo con esto</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R12-screen-check.es.md">Ver en GitHub ↗</a></aside><article class="prose" lang="es"><p>Un solo cuadro de una grabación de pantalla puede filtrar una contraseña, un nombre o la ruta
+de una carpeta. Esta es la revisión que hago antes de cada grabación, en tres pasos, con el
+prompt para el escáner.</p>
+<h2 id="los-tres-pasos">Los tres pasos</h2>
+<ol>
+<li><strong>Una lista privada de lo que nunca debe salir:</strong> nombres, rutas de carpetas, usuarios de
+cuentas, uno por línea en <code>never-show.txt</code>. Guárdala fuera de la carpeta que vas a grabar.</li>
+<li><strong>Antes de grabar, un script revisa todo lo que vas a mostrar</strong> buscando esa lista, y
+además cualquier cosa con forma de contraseña, API key o token de bot. Te dice el archivo y
+la línea, nunca el secreto completo, y termina con PASS o FAIL.</li>
+<li><strong>Notificaciones apagadas, apps de chat y correo cerradas, una sola ventana.</strong> Graba una
+ventana, nunca el escritorio entero.</li>
+</ol>
+<h2 id="medido">Medido</h2>
+<p>Para probarlo, escondí un token de bot falso en mi propia demo. El escáner lo atrapó: archivo
+y línea, FAIL, antes de que yo apretara grabar. Con la demo limpia termina en PASS.</p>
+<figure><img src="../../../files/posts/img/R12-caught.jpg" alt="El escáner en la carpeta con la trampa: ERROR fake-token.txt line 3, FAIL" loading="lazy" /><figcaption>El escáner en la carpeta con la trampa: ERROR fake-token.txt line 3, FAIL</figcaption></figure>
+<h2 id="costo-precios-a-oct-2026">Costo (precios a oct 2026)</h2>
+<p><strong>$0.</strong> Un script de Python en tu computadora. Cualquier IA que escriba código puede hacerlo
+con el prompt; yo uso Claude Code (Claude Max, $200/mes, que ya pago para todo lo que
+construyo).</p>
+<h2 id="pruebalo">Pruébalo</h2>
+<p>Pega esto en tu IA (Claude, ChatGPT, Codex, Claude Code). Necesitas Python 3.</p>
+<p>Probado el 2026-10-29 con Claude Code en una carpeta de prueba con un token falso en un archivo
+y una ruta privada en otro: reportó los dos con archivo y línea, mostró solo los primeros
+caracteres, imprimió FAIL y salió con 1.</p>
+<p>El prompt va en inglés, que es como lo probé.</p>
+<pre><code class="language-text">Write a Python script, scan.py, standard library only, that scans a folder before I record my screen.
+
+It reads my private list from never-show.txt (one word or phrase per line, matched without caring about upper or lower case) and also flags anything shaped like a password, API key or bot token. For each hit, print the file, the line number and which rule matched, showing only the first 4 characters of what it found, never the full secret.
+
+Skip files it cannot read as text. End with PASS if nothing was found and FAIL if anything was, and exit with 1 on FAIL. Usage: python3 scan.py &lt;folder&gt;.
+</code></pre>
+<h2 id="ojo-con-esto">Ojo con esto</h2>
+<ul>
+<li><strong>El escáner solo lee archivos.</strong> No ve las pestañas del navegador, las notificaciones del
+escritorio ni el mensaje que aparece a mitad de la grabación. Para eso está el paso 3.</li>
+<li><strong><code>never-show.txt</code> va fuera de la carpeta que grabas</strong>, o la lista misma se vuelve la
+filtración. Sería irónico, pero no gracioso.</li>
+<li><strong>Las formas se pierden cosas.</strong> Una contraseña sin un <code>password=</code> al lado parece cualquier
+otra palabra. Las que te preocupan, ponlas en la lista privada.</li>
+<li><strong>Revisa también el video terminado.</strong> Después de editar, paso reconocimiento de texto (OCR)
+por el archivo final cada medio segundo, porque un cuadro puede mostrar algo que el escáner
+nunca vio.</li>
+</ul>
+<hr />
+<p><strong>In English:</strong> a private never-show list, a script that scans for it and for anything shaped
+like a password or token, and one window with notifications off. It caught a planted fake
+token. Tested 2026-10-29. Cost: $0 (prices as of Oct 2026).</p>
+<div class="post-next"><a href="../index.html">← Todas las notas</a><a href="../../recursos/index.html">Recursos ↗</a></div></article></div></main><footer class="site-footer"><div class="wrap"><div class="footer-inner"><a class="wordmark" href="../../index.html">linnet builds.</a><span class="footer-note">Hecho, probado y contado.</span><div class="footer-links"><a href="https://www.instagram.com/linnetbuilds/">Instagram</a><a href="https://www.tiktok.com/@linnetbuilds">TikTok</a><a href="https://www.youtube.com/@linnetbuilds">YouTube</a><a href="https://github.com/linnetbuilds/notes">GitHub</a></div></div><p class="footer-bottom">@linnetbuilds · Notas abiertas. Sin dejar tu correo. · <a href="../../../assets/licenses/index.txt">Licencias de fuentes</a></p></div></footer></body></html>

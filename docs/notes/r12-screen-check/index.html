@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Linnet Builds | Scanned before I press record</title><meta name="description" content="Built, tried, written down."><link rel="canonical" href="https://linnetbuilds.github.io/notes/notes/r12-screen-check/"><link rel="alternate" hreflang="es" href="https://linnetbuilds.github.io/notes/es/notas/r12-screen-check/index.html"><meta property="og:title" content="Linnet Builds | Scanned before I press record"><meta property="og:type" content="article"><meta property="og:url" content="https://linnetbuilds.github.io/notes/notes/r12-screen-check/"><meta property="og:image" content="https://linnetbuilds.github.io/notes/assets/social-card.png"><meta property="og:description" content="Built, tried, written down."><link rel="icon" href="../../assets/mark.png"><link rel="stylesheet" href="../../assets/site.css"><script defer src="../../assets/site.js"></script></head><body>
+<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="../../index.html"><img src="../../assets/mark.png" alt="" width="36" height="36">linnet builds.</a><nav class="main-nav" aria-label="Main navigation"><a href="../../videos/index.html">Videos</a><a href="../index.html">Notes</a><a href="../../resources/index.html">Resources</a><a href="../../about/index.html">About</a><a class="github-link" href="https://github.com/linnetbuilds/notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.2.8 3.28.12.1-.73.4-1.23.72-1.52-2.49-.28-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 5.35c.95 0 1.9.13 2.79.38 2.13-1.44 3.07-1.15 3.07-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.26-5.12 5.54.4.35.76 1.03.76 2.08v3.92c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>GitHub</a></nav><a class="lang-link" href="../../es/notas/r12-screen-check/index.html" lang="es" hreflang="es" aria-label="Leer en español"><strong>EN</strong> / ES</a></div></header>
+<main id="main" class="wrap"><header class="article-header"><p class="breadcrumb"><a href="../index.html">Notes</a> / R12</p><h1>Scanned before I press record</h1><div class="article-meta"><span>2026-11-20</span><span>R12 · EN</span><a href="https://github.com/linnetbuilds/notes/blob/main/posts/R12-screen-check.md">View on GitHub ↗</a></div></header><div class="article-layout"><aside class="toc"><p class="meta">In this note</p><ol><li><a href="#the-three-steps">The three steps</a></li><li><a href="#measured">Measured</a></li><li><a href="#cost-prices-as-of-oct-2026">Cost (prices as of Oct 2026)</a></li><li><a href="#try-it">Try it</a></li><li><a href="#gotchas">Gotchas</a></li></ol><a class="source-link" href="https://github.com/linnetbuilds/notes/blob/main/posts/R12-screen-check.md">View on GitHub ↗</a></aside><article class="prose" lang="en"><p>One frame of a screen recording can leak a password, a name or a folder path. This is the
+check I run before every recording, in three steps, with the prompt for the scanner.</p>
+<h2 id="the-three-steps">The three steps</h2>
+<ol>
+<li><strong>A private list of what must never appear:</strong> names, folder paths, account handles, one
+per line in <code>never-show.txt</code>. Keep it outside the folder you record.</li>
+<li><strong>Before recording, a script scans everything you'll show</strong> for that list, plus anything
+shaped like a password, API key or bot token. It reports the file and line, never the full
+secret, and ends with PASS or FAIL.</li>
+<li><strong>Notifications off, chat and mail apps closed, one window only.</strong> Record a window, never
+the whole desktop.</li>
+</ol>
+<h2 id="measured">Measured</h2>
+<p>I planted a fake bot token in my own demo to test it. The scan caught it: file and line,
+FAIL, before I pressed record. On the clean demo it ends in PASS.</p>
+<figure><img src="../../files/posts/img/R12-caught.jpg" alt="The scan on the planted folder: ERROR fake-token.txt line 3, FAIL" loading="lazy" /><figcaption>The scan on the planted folder: ERROR fake-token.txt line 3, FAIL</figcaption></figure>
+<h2 id="cost-prices-as-of-oct-2026">Cost (prices as of Oct 2026)</h2>
+<p><strong>$0.</strong> A Python script on your computer. Any AI that writes code can write it from the
+prompt; I use Claude Code (Claude Max, $200/month, which I already pay for everything I build).</p>
+<h2 id="try-it">Try it</h2>
+<p>Paste this into your AI (Claude, ChatGPT, Codex, Claude Code). Needs Python 3.</p>
+<p>Tested 2026-10-29 with Claude Code on a test folder with a fake token in one file and a private
+path in another: it reported both with file and line, showed only the first characters, printed
+FAIL and exited with 1.</p>
+<pre><code class="language-text">Write a Python script, scan.py, standard library only, that scans a folder before I record my screen.
+
+It reads my private list from never-show.txt (one word or phrase per line, matched without caring about upper or lower case) and also flags anything shaped like a password, API key or bot token. For each hit, print the file, the line number and which rule matched, showing only the first 4 characters of what it found, never the full secret.
+
+Skip files it cannot read as text. End with PASS if nothing was found and FAIL if anything was, and exit with 1 on FAIL. Usage: python3 scan.py &lt;folder&gt;.
+</code></pre>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li><strong>A scan only reads files.</strong> It can't see your browser tabs, desktop notifications or a
+message that pops up mid-recording. That's what step 3 is for.</li>
+<li><strong>Keep <code>never-show.txt</code> out of the recorded folder</strong>, or the list itself becomes the leak.</li>
+<li><strong>Shapes miss things.</strong> A password with no <code>password=</code> next to it looks like any other word.
+Put the ones you worry about on the private list.</li>
+<li><strong>Check the finished video too.</strong> After editing, I run text recognition (OCR) on the final
+file every half second, because a frame can show something the scan never saw.</li>
+</ul>
+<hr />
+<p><strong>En español:</strong> antes de grabar la pantalla: una lista privada de lo que nunca debe salir, un
+script que busca esa lista y cualquier cosa con forma de contraseña o token (prompt de arriba,
+en inglés), y una sola ventana con las notificaciones apagadas. Puse un token falso para
+probarlo y lo atrapó: archivo, línea y FAIL. Probado el 2026-10-29. Costo: $0 (precios a oct
+2026).</p>
+<div class="post-next"><a href="../index.html">← All notes</a><a href="../../resources/index.html">Resources ↗</a></div></article></div></main><footer class="site-footer"><div class="wrap"><div class="footer-inner"><a class="wordmark" href="../../index.html">linnet builds.</a><span class="footer-note">Built, tried, written down.</span><div class="footer-links"><a href="https://www.instagram.com/linnetbuilds/">Instagram</a><a href="https://www.tiktok.com/@linnetbuilds">TikTok</a><a href="https://www.youtube.com/@linnetbuilds">YouTube</a><a href="https://github.com/linnetbuilds/notes">GitHub</a></div></div><p class="footer-bottom">@linnetbuilds · Open notes. No email required. · <a href="../../assets/licenses/index.txt">Font licenses</a></p></div></footer></body></html>

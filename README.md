@@ -33,6 +33,7 @@ Everything here stays free, no email needed. / Todo lo de aquí sigue gratis, si
 | [C03](posts/C03-night-queue.md) | 2026-11-12 | 1,000 runs, one at a time |
 | [R05](posts/R05-two-tools.md) | 2026-11-13 | Two AI coding tools, rules written once |
 | [R11](posts/R11-morning-digest.md) | 2026-11-18 | A morning digest that only texts you when something is due |
+| [R12](posts/R12-screen-check.md) | 2026-11-20 | My check before I record my screen |
 | [R38](posts/R38-interview-plan.md) | 2026-11-17 | Let the AI interview you before it plans your week |
 
 New notes are added as the posts go out.
